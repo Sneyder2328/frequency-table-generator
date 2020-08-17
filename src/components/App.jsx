@@ -1,6 +1,7 @@
 import React from 'react';
 import {AppHeader} from "./AppHeader/appHeader";
 import {DataEntry} from "./DataEntry/dataEntry";
+import {ColumnsSelector} from "./ColumnsSelector/columnsSelector";
 
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
     <div className="App">
         <AppHeader/>
         <DataEntry/>
+        <ColumnsSelector/>
     </div>
   );
 }

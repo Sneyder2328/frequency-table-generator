@@ -1,0 +1,23 @@
+@import "src/utils/variables";
+
+.chip {
+  background-color: #a7d3ff;
+  margin-right: 8px;
+  border-radius: 15px;
+  padding: 5px 10px;
+  color: $text-color;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  &.active {
+    background-color: $background-color;
+  }
+
+  &.editable:hover {
+    background-color: #2782de;
+  }
+  &.editable.active:hover {
+    background-color: #7ebfff;
+  }
+}
