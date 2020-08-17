@@ -1,0 +1,44 @@
+@import "src/utils/variables";
+
+.data-entry {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 40px;
+
+  &:before {
+    content: "Ingrese set de datos (separar con espacio o comas y usar punto para nros decimales. ej: 5.5 6.2 8 9.5)";
+    color: #118bff;
+    position: absolute;
+    top: 90px;
+    font-size: 0.8rem;
+  }
+
+  .input {
+    flex-grow: 1;
+    padding: 6px 8px;
+    border: 1px solid $background-color;
+    outline: none;
+    font-size: 1rem;
+
+    &.error{
+      border: 1px solid #ff0000;
+    }
+  }
+
+  .btn {
+    border: none;
+    color: $text-color;
+    margin-left: 20px;
+    font-size: 1rem;
+    background-color: $background-color;
+    padding: 6px 20px;
+    cursor: pointer;
+    outline: none;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      background-color: $background-color-hovered;
+    }
+  }
+}
