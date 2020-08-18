@@ -22,7 +22,7 @@ class Histogram extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="chartContainer">
         <ZingChart ref={this.chart} data={this.state.config} />
       </div>
     );

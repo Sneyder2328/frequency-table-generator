@@ -1,17 +1,19 @@
 HOW TO USE COMPONENT HISTOGRAM
 
 EXAMPLE:
-<Histogram
+<MixedBarLines
 title="title"
 text="text"
 labels={[1, 2, 3, 4]}
 scaleXName="scale x"
 scaleYName="scale y"
-series={[{ values: [1, 2, 3] }]}
+barValues={[59, 70, 40, 75, 33, 50, 65]}
+lineValues={[59, 70, 40, 75, 33, 50, 65]}
 />
 
 fi of every interval of the table
-series=[{ values: [1, 2, 3] }]
+barValues=[59, 70, 40, 75, 33, 50, 65]
+lineValues=[49, 30, 21, 15, 59, 51, 69]
 
 for the labels in each interval in the x-axis
 the number of elements in labels should match the number of elements in the values array up above
