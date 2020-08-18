@@ -3,13 +3,25 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@reduxjs/toolkit": "^1.4.0",
+    "@types/jest": "^26.0.10",
+    "@types/node": "^14.6.0",
+    "@types/react": "^16.9.46",
+    "@types/react-dom": "^16.9.8",
     "classnames": "^2.2.6",
     "cra-template": "^1.0.0",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+<<<<<<< HEAD
     "react-scripts": "^3.4.3",
     "zingchart-react": "^3.0.0"
+=======
+    "react-redux": "^7.2.1",
+    "react-scripts": "3.4.1",
+    "redux-thunk": "^2.3.0",
+    "typescript": "^3.9.7"
+>>>>>>> 7b906909a5d3a2e62c473a66a7c9f65ef140a489
   },
   "scripts": {
     "start": "react-scripts start",
@@ -31,5 +43,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/classnames": "^2.2.10",
+    "@types/react-redux": "^7.1.9"
   }
 }
