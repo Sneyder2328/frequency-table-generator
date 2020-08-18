@@ -4,11 +4,12 @@
   "private": true,
   "dependencies": {
     "classnames": "^2.2.6",
-    "cra-template": "1.0.0",
+    "cra-template": "^1.0.0",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1"
+    "react-scripts": "^3.4.3",
+    "zingchart-react": "^3.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
