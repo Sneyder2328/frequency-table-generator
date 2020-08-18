@@ -7,7 +7,7 @@ export const DataSet = () => {
     const dataSet: Array<number> = useSelector(state => state.dataSet)
 
     return (
-        <div className={'dataset container'}>
+        <div className={'dataset'}>
             <div className={'title'}>
                 <i className="fas fa-angle-down"/>
                 <span>Set de datos</span>

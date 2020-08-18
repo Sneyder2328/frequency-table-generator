@@ -6,6 +6,7 @@ import { ColumnsSelector } from "./ColumnsSelector/columnsSelector";
 import { store } from "../store";
 import { Legend } from "./Legend/legend";
 import { DataSet } from "./DataSet/dataSet";
+import { GraphicsSelector } from "./GraphicsSelector/graphicsSelector";
 
 export const App = () => {
   return (
@@ -16,6 +17,7 @@ export const App = () => {
         <ColumnsSelector />
         <Legend />
         <DataSet />
+        <GraphicsSelector />
       </div>
     </Provider>
   );
