@@ -6,9 +6,12 @@ html, body {
 body {
   font-family: 'Roboto', sans-serif;
 
-  .container {
-    width: 70%;
-    margin: 0 auto;
+  #root {
+
+    .App {
+      width: 70%;
+      margin: 0 auto;
+    }
   }
 }
 

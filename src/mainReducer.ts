@@ -1,52 +1,74 @@
 import {createReducer} from "@reduxjs/toolkit";
-import {toggleColumnActive} from "./components/UI/Chip/chip";
+import {toggleColumnActive} from "./components/ColumnsSelector/columnsSelector";
+import {toggleGraphicsActive} from "./components/GraphicsSelector/graphicsSelector";
 
 const defaultColumns = [
     {
         label: "Categoria",
-        activeByDefault: true
+        active: true
     },
     {
         label: "fi",
-        activeByDefault: true
+        active: true
     },
     {
         label: "fri",
-        activeByDefault: true
+        active: true
     },
     {
         label: "Fi",
-        activeByDefault: true
+        active: true
     },
     {
         label: "Fri",
-        activeByDefault: true
+        active: true
     },
     {
         label: "mi",
-        activeByDefault: true
+        active: true
     },
     {
         label: "mi*fi",
-        activeByDefault: true
+        active: true
     },
     {
         label: "mi-x̄",
-        activeByDefault: true
+        active: true
     },
     {
         label: "(mi-x̄)^2",
-        activeByDefault: false
+        active: false
     },
     {
         label: "(mi-x̄)^2*fi",
-        activeByDefault: true
+        active: true
     }
 ];
+const defaultGraphics = [
+    {
+        label: "Histograma",
+        active: true
+    },
+    {
+        label: "Sectores",
+        active: false
+    },
+    {
+        label: "Lineas",
+        active: false
+    },
+    {
+        label: "Columnas con lineas",
+        active: false
+    }
+]
 
+
+type Selection = { label: string; active: boolean };
 export type AppState = {
     dataSet: Array<number>;
-    columnsTable: Array<{ label: string; active: boolean }>;
+    columnsTable: Array<Selection>;
+    graphicsList: Array<Selection>;
     frequencyTable: Array<Array<{ value: string }>>;
     dataSummary: {
         n?: number;
@@ -61,7 +83,8 @@ export type AppState = {
 
 const initialState: AppState = {
     dataSet: [],
-    columnsTable: defaultColumns.map(({label, activeByDefault}) => ({label, active: activeByDefault})),
+    columnsTable: defaultColumns,
+    graphicsList: defaultGraphics,
     frequencyTable: [],
     dataSummary: {}
 }
@@ -71,8 +94,22 @@ export const mainReducer = createReducer(
         [toggleColumnActive.type]: (state, action) => {
             return {
                 ...state,
-                columnsTable: state.columnsTable.map((column, index)=>{
-                    if(index===action.payload){
+                columnsTable: state.columnsTable.map((column, index) => {
+                    if (index === action.payload) {
+                        return {
+                            label: column.label,
+                            active: !column.active
+                        }
+                    }
+                    return column
+                })
+            }
+        },
+        [toggleGraphicsActive.type]: (state, action) => {
+            return {
+                ...state,
+                graphicsList: state.graphicsList.map((column, index) => {
+                    if (index === action.payload) {
                         return {
                             label: column.label,
                             active: !column.active

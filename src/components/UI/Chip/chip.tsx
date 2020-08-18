@@ -4,8 +4,6 @@ import "./chip.scss";
 import {createAction} from "@reduxjs/toolkit";
 import {useDispatch} from "react-redux";
 
-export const toggleColumnActive = createAction<number>('TOGGLE_COLUMN_ACTIVE')
-
 type Props = {
     index: number;
     label: string;
