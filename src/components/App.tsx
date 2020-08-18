@@ -4,6 +4,8 @@ import {AppHeader} from "./AppHeader/appHeader";
 import {DataEntry} from "./DataEntry/dataEntry";
 import {ColumnsSelector} from "./ColumnsSelector/columnsSelector";
 import {store} from "../store";
+import {Legend} from "./Legend/legend";
+import {DataSet} from "./DataSet/dataSet";
 
 export const App = () => {
     return (
@@ -12,6 +14,8 @@ export const App = () => {
                 <AppHeader/>
                 <DataEntry/>
                 <ColumnsSelector/>
+                <Legend/>
+                <DataSet/>
             </div>
         </Provider>
     );

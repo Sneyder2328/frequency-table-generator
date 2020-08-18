@@ -1,4 +1,6 @@
+@import "src/utils/variables";
+
 .columns-selector {
-  padding-top: 20px;
+  padding-top: $margin;
   display: flex;
 }

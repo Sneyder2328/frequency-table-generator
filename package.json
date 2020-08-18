@@ -13,15 +13,11 @@
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-<<<<<<< HEAD
     "react-scripts": "^3.4.3",
-    "zingchart-react": "^3.0.0"
-=======
+    "zingchart-react": "^3.0.0",
     "react-redux": "^7.2.1",
-    "react-scripts": "3.4.1",
     "redux-thunk": "^2.3.0",
     "typescript": "^3.9.7"
->>>>>>> 7b906909a5d3a2e62c473a66a7c9f65ef140a489
   },
   "scripts": {
     "start": "react-scripts start",

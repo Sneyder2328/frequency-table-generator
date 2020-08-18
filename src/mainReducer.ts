@@ -1,5 +1,5 @@
 import {createReducer} from "@reduxjs/toolkit";
-import {toggleColumnActive} from "./components/ColumnsSelector/Chip/chip";
+import {toggleColumnActive} from "./components/UI/Chip/chip";
 
 const defaultColumns = [
     {
@@ -69,7 +69,6 @@ const initialState: AppState = {
 export const mainReducer = createReducer(
     initialState, {
         [toggleColumnActive.type]: (state, action) => {
-            //state.columnsTable[action.payload].active = !state.columnsTable[action.payload].active
             return {
                 ...state,
                 columnsTable: state.columnsTable.map((column, index)=>{
