@@ -11,16 +11,12 @@ type Props = {
     label: string;
     isActive: boolean;
     isEditable: boolean;
+    onClick: (index: number) => any;
 }
-export const Chip: React.FC<Props> = ({isActive, isEditable, label, index}) => {
-    const dispatch = useDispatch()
-
-    const handleClick = () => {
-        isEditable && dispatch(toggleColumnActive(index))
-    };
-
+export const Chip: React.FC<Props> = ({isActive, isEditable, label, index, onClick}) => {
     return (
-        <div className={classnames('chip', {'active': isActive, 'editable': isEditable})} onClick={handleClick}>
+        <div className={classnames('chip', {'active': isActive, 'editable': isEditable})}
+             onClick={() => isEditable && onClick(index)}>
             <span>{label}</span>
         </div>
     )

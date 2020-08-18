@@ -1,17 +1,22 @@
 import React from 'react';
-import {Chip} from "./Chip/chip";
-import { useSelector } from 'react-redux'
+import {Chip, toggleColumnActive} from "../UI/Chip/chip";
+import {useDispatch, useSelector} from 'react-redux'
 import "./columnsSelector.scss"
 
 export const ColumnsSelector = () => {
-
     // @ts-ignore
     const columns = useSelector(state => state.columnsTable)
-    console.log('columnsSelector=', columns);
+    const dispatch = useDispatch()
+
+    const toggleChip = (index: number) => {
+        dispatch(toggleColumnActive(index))
+    }
+
     return (
         <div className={'columns-selector container'}>
-            {columns.map((column: {label:string;active: boolean}, index: number) => (
-                <Chip index={index} isEditable={index!==0} isActive={column.active} label={column.label} key={index}/>))}
+            {columns.map((column: { label: string; active: boolean }, index: number) => (
+                <Chip index={index} isEditable={index !== 0} isActive={column.active} label={column.label} key={index}
+                      onClick={toggleChip}/>))}
         </div>
     )
 };

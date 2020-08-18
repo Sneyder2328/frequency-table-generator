@@ -1,4 +1,4 @@
-@import "src/utils/variables";
+@import "../../../utils/variables";
 
 .chip {
   background-color: #a7d3ff;
@@ -8,7 +8,7 @@
   color: $text-color;
   font-size: 1rem;
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.15s ease-in-out;
 
   &.active {
     background-color: $background-color;
