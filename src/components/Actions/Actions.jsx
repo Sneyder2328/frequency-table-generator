@@ -2,6 +2,7 @@ import React from "react";
 import "./Actions.scss";
 import html2canvas from "html2canvas";
 import html2pdf from "html2pdf.js";
+import variables from "./Variables.js";
 
 class Actions extends React.Component {
   constructor(props) {
@@ -11,8 +12,7 @@ class Actions extends React.Component {
     this.download = this.download.bind(this);
     this.savePDF = this.savePDF.bind(this);
     this.removeChildElement = this.removeChildElement.bind(this);
-    //if you want to add file extensions, change acceptedFiles
-    let acceptedFiles = [".csv"];
+    let acceptedFiles = variables.acceptedFiles;
     let acceptedFilesString = acceptedFiles.join(",");
     let acceptedFilesRegex = acceptedFiles.join("|");
     const regexFiles = new RegExp(acceptedFilesRegex);
@@ -61,7 +61,14 @@ class Actions extends React.Component {
           moda: parsedData[parsedData.indexOf("moda") + 1],
           mediana: parsedData[parsedData.indexOf("mediana") + 1],
           varianza: parsedData[parsedData.indexOf("varianza") + 1],
+          desviacion: parsedData[parsedData.indexOf("varianza") + 1],
+          asp: parsedData[parsedData.indexOf("asp") + 1],
+          cv: parsedData[parsedData.indexOf("cv") + 1],
+          n: parsedData[parsedData.indexOf("n") + 1],
+          nroCategorias: parsedData[parsedData.indexOf("nroCategorias") + 1],
+          amplitud: parsedData[parsedData.indexOf("amplitud") + 1],
         };
+        console.log(csvData);
       }.bind(this);
       reader.readAsText(file);
     } else {
@@ -81,16 +88,43 @@ class Actions extends React.Component {
   }
   //EXPORT CSV
   download(event) {
-    let filename = "Dataset.csv";
-    //GET DATASET HERE TO EXPORT
-    let datasetArray = [1, 2, 3, 4]; //PLACEHOLDER FOR REDUX LATER
-    //GET DATASET HERE TO EXPORT
-    if (datasetArray.length > 0) {
-      let content = datasetArray.join(",");
+    let filename = variables.filename;
+    //GET DATASET HERE TO EXPORT/ DUMMY DATA
+    let csvData = {
+      dataset: [1, 2, 3, 4, 5],
+      usandoIntervalos: 1,
+      fi: [1, 2, 3, 4],
+      fri: [1, 2, 34, 5, 6],
+      Fi: [1, 2, 3, 4],
+      Fri: [1, 2, 3, 4],
+      media: 1,
+      moda: 1,
+      mediana: 1,
+      varianza: 1,
+      desviacion: 1,
+      asp: 1,
+      cv: 1,
+      n: 36,
+      nroCategorias: 6,
+      amplitud: 4,
+    };
+    //GET DATASET HERE TO EXPORT/ DUMMY DATA
+    let datasetArray = variables.datasetArray;
+    if (csvData.dataset.length > 0) {
+      let dataString = ""; //Content of the csv to export
+      for (let i = 0; i < datasetArray.length; i++) {
+        let tempName = datasetArray[i];
+        tempName = tempName.replace(/\n/, "").replace(/,/, "");
+        let item =
+          typeof csvData[tempName] == "object"
+            ? csvData[tempName].join(",")
+            : csvData[tempName];
+        dataString += datasetArray[i] + item;
+      }
       var element = document.createElement("a");
       element.setAttribute(
         "href",
-        "data:text/plain;charset=utf-8," + encodeURIComponent(content)
+        "data:text/plain;charset=utf-8," + encodeURIComponent(dataString)
       );
       element.setAttribute("download", filename);
       element.style.display = "none";
@@ -110,11 +144,17 @@ class Actions extends React.Component {
     html2canvas(element).then((canvas) => {
       //PENDIENTE ELIMINAR POR SI NO TIENE UTILIDAD
       let body = element.cloneNode(true);
+      var opt = {
+        margin: 0,
+        filename: "myfile.pdf",
+        html2canvas: { scale: 3 },
+        jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
+      };
       hasError += this.removeChildElement(body, "App", "data-entry");
       hasError += this.removeChildElement(body, "App", "columns-selector");
       hasError > 0
         ? alert("ingrese el set de datos por favor")
-        : html2pdf(body);
+        : html2pdf(element, opt);
     });
   }
 
@@ -126,9 +166,9 @@ class Actions extends React.Component {
       body
         .getElementsByClassName(parentElementClass)[0]
         .removeChild(body.getElementsByClassName(childElementClass)[0]);
-      return 1;
+      return 0;
     }
-    return 0;
+    return 1;
   }
 
   render() {
