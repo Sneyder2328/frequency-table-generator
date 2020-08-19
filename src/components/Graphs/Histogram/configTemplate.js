@@ -7,7 +7,6 @@ export const configTemp = {
     text: "this is the details",
   },
   scaleX: {
-    //labels: [1, 2, 3, 4],
     labels: ["1", "2", "5"],
     guide: {
       backgroundColor: "#e6fcff #96efff",
