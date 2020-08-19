@@ -25,12 +25,6 @@ export const configGraphs = {
     },
     [SECTORS]: {
         type: "pie",
-        title: {
-            text: "this is the title",
-        },
-        subtitle: {
-            text: "this is the details",
-        },
         scaleX: {
             labels: [1, 2, 3, 4],
             guide: {

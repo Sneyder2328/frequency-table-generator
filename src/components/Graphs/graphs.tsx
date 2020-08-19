@@ -87,6 +87,12 @@ export const Graphs = () => {
                 typeGraph={HISTOGRAM}
             />
             <Graph
+                title={'Sectores'}
+                scaleXName={"nombre var"}
+                scaleYName={"fi"}
+                text={"subtitulo"}
+                typeGraph={SECTORS}/>
+            <Graph
                 title={'Lineas'}
                 scaleXName={"nombre var"}
                 scaleYName={"fi"}
