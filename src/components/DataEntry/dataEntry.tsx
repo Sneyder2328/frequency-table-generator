@@ -15,7 +15,7 @@ const convertToArray = (data: string): Array<number> => {
 }
 
 export const DataEntry = () => {
-    const [data, setData] = useState("");
+    const [data, setData] = useState<string>("");
     const [arrayNums, setArrayNums] = useState<Array<number>>([])
     const [isInputValid, setValidInput] = useState(true)
     const dispatch = useDispatch()
@@ -49,7 +49,7 @@ export const DataEntry = () => {
         <div className={'data-entry'}>
             <input className={classNames('input', {'error': !isInputValid})} type='text' value={data}
                    onChange={(e) => setData(e.target.value)} onKeyDown={handleKeyDown}/>
-            <button className={classNames('btn', {'active': isInputValid})}
+            <button className={classNames('btn', {'active': isInputValid && data.trim() !== ""})}
                     onClick={() => isInputValid && handleCalc()}>Procesar
             </button>
             <button className={'active btn'} onClick={handleClean}>Limpiar</button>

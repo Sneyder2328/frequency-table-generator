@@ -47,48 +47,6 @@ const defaultColumnsIntervals = {
         active: true
     }
 }
-// const defaultColumnsIntervals = [
-//     {
-//         label: "Categoria",
-//         active: true
-//     },
-//     {
-//         label: "fi",
-//         active: true
-//     },
-//     {
-//         label: "fri",
-//         active: true
-//     },
-//     {
-//         label: "Fi",
-//         active: true
-//     },
-//     {
-//         label: "Fri",
-//         active: true
-//     },
-//     {
-//         label: "mi",
-//         active: true
-//     },
-//     {
-//         label: "mi*fi",
-//         active: true
-//     },
-//     {
-//         label: "mi-x̄",
-//         active: true
-//     },
-//     {
-//         label: "(mi-x̄)^2",
-//         active: false
-//     },
-//     {
-//         label: "(mi-x̄)^2*fi",
-//         active: true
-//     }
-// ];
 
 const defaultColumnsClasses = {
     [nanoid()]: {
@@ -121,51 +79,13 @@ const defaultColumnsClasses = {
     },
     [nanoid()]: {
         label: "(xi-x̄)^2",
-        active: false
+        active: true
     },
     [nanoid()]: {
         label: "(xi-x̄)^2*fi",
         active: true
     }
 }
-// const defaultColumnsClasses = [
-//     {
-//         label: "xi",
-//         active: true
-//     },
-//     {
-//         label: "fi",
-//         active: true
-//     },
-//     {
-//         label: "fri",
-//         active: true
-//     },
-//     {
-//         label: "Fi",
-//         active: true
-//     },
-//     {
-//         label: "Fri",
-//         active: true
-//     },
-//     {
-//         label: "xi*fi",
-//         active: true
-//     },
-//     {
-//         label: "xi-x̄",
-//         active: true
-//     },
-//     {
-//         label: "(xi-x̄)^2",
-//         active: false
-//     },
-//     {
-//         label: "(xi-x̄)^2*fi",
-//         active: true
-//     }
-// ];
 const defaultGraphics = [
     {
         label: "Histograma",

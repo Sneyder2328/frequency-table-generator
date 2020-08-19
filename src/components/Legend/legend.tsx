@@ -16,14 +16,30 @@ export const Legend = () => {
             </div>
             <div className={classNames('content', {"hide": !visible})}>
                 <p>
+                    <span>
                     <strong>fi:</strong> Frecuencia Frecuencia absoluta
-                    <strong> fri:</strong> Frecuencia Frecuencia relativa
-                    <strong> Fi:</strong> Frecuencia acumulada
-                    <strong> Fri:</strong> Frecuencia relativa acumulada
-                    <strong> mi:</strong> marca
-                    <strong> n:</strong> cantidad de datos
-                    <strong> k:</strong> Nro de categorias
-                    <strong> c:</strong> tamaño de categoria
+                    </span>
+                    <span>
+                    <strong>fri:</strong> Frecuencia Frecuencia relativa
+                    </span>
+                    <span>
+                    <strong>Fi:</strong> Frecuencia acumulada
+                    </span>
+                    <span>
+                    <strong>Fri:</strong> Frecuencia relativa acumulada
+                    </span>
+                    <span>
+                    <strong>mi:</strong> marca
+                    </span>
+                    <span>
+                    <strong>n:</strong> cantidad de datos
+                    </span>
+                    <span>
+                    <strong>k:</strong> Nro de categorias
+                    </span>
+                    <span>
+                    <strong>c:</strong> tamaño de categoria
+                    </span>
                 </p>
             </div>
         </div>
