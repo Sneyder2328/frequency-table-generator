@@ -7,6 +7,7 @@ import { store } from "../store";
 import { Legend } from "./Legend/legend";
 import { DataSet } from "./DataSet/dataSet";
 import { GraphicsSelector } from "./GraphicsSelector/graphicsSelector";
+import Actions from "./Actions/Actions";
 
 export const App = () => {
   return (
@@ -17,6 +18,7 @@ export const App = () => {
         <ColumnsSelector />
         <Legend />
         <DataSet />
+        <Actions />
         <GraphicsSelector />
       </div>
     </Provider>
