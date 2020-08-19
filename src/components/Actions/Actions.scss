@@ -1,0 +1,28 @@
+@import "src/utils/variables";
+
+.ActionButtons {
+  padding-top: $margin;
+
+  .ActionBtn {
+    background-color: $background-color;
+    font-size: 0.8rem;
+    color: $text-color;
+    text-align: center;
+    padding: 0.4rem;
+    margin-left: 1rem;
+    border-radius: 5%;
+    cursor: pointer;
+    transition: 100ms linear;
+  }
+
+  .ActionBtn:hover {
+    background-color: $background-color-hovered;
+  }
+
+  .show {
+    display: block;
+  }
+  .none {
+    display: none;
+  }
+}
