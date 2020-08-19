@@ -1,6 +1,5 @@
 import React from "react";
 import "zingchart/es6";
-import Zingchart from "zingchart-react";
 import "zingchart-react/dist/modules/zingchart-depth.min.js";
 import configTemp from "./configTemplate.js";
 import ZingChart from "zingchart-react";

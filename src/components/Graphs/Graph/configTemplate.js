@@ -1,10 +1,4 @@
 export const configTemp = {
-    title: {
-        text: "this is the title",
-    },
-    subtitle: {
-        text: "this is the details",
-    },
     scaleX: {
         labels: ["1", "2", "5"],
         guide: {
@@ -13,10 +7,7 @@ export const configTemp = {
             lineStyle: "solid",
             lineWidth: 1,
             visible: false,
-        },
-        label: {
-            text: "scale X",
-        },
+        }
     },
     scaleY: {
         label: {

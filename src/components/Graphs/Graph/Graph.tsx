@@ -1,13 +1,14 @@
 import React, {useEffect, useRef, useState} from "react";
 import "zingchart/es6";
 import "zingchart-react/dist/modules/zingchart-depth.min.js";
-import {configTemp} from "./configTemplate.js";
 // @ts-ignore
 import ZingChart from "zingchart-react";
 import {useSelector} from "react-redux";
 import {AppState, Selection} from "../../../mainReducer";
 import {HashTable} from "../../../utils/utils";
-import "./histogram.scss"
+import "./graph.scss"
+import {configGraphs} from "../config";
+import {graphs} from "../graphs";
 
 export const seriesWithLines = (values: Array<number>) => [
     {
@@ -39,21 +40,20 @@ type Props = {
     text: string;
     scaleXName: string;
     scaleYName: string;
-    hasLines: boolean;
+    typeGraph: string;
 }
-export const Histogram: React.FC<Props> = ({title, text, scaleXName, scaleYName, hasLines}) => {
-    const [config, setConfig] = useState<typeof configTemp>(
+export const Graph: React.FC<Props> = ({title, text, scaleXName, scaleYName, typeGraph}) => {
+    const [config, setConfig] = useState(
         {
-            ...configTemp,
             // @ts-ignore
-            type: hasLines ? "mixed" : "bar",
-            // @ts-ignore
-            //series: hasLines ? seriesWithLines() : seriesDefault,
-            title: {text: title},
-            subtitle: {text},
+            ...configGraphs[typeGraph],
+            type: graphs[typeGraph].type,
+            // title: {text: title},
+            // subtitle: {text},
             scaleX: {
-                ...configTemp.scaleX,
-                label: {text: scaleXName}
+                // @ts-ignore
+                ...configGraphs[typeGraph].scaleX,
+                // label: {text: scaleXName}
             },
             scaleY: {label: {text: scaleYName}}
         }
@@ -72,16 +72,16 @@ export const Histogram: React.FC<Props> = ({title, text, scaleXName, scaleYName,
         const labels = frequencyTable.map((freq) => freq[Object.keys(columnsTable)[0]]);
 
         const getFrequencies = (index: number) => frequencyTable.map((freq) => freq[Object.keys(columnsTable)[index]]).map(str => parseFloat(str))
-        const frequencies = hasLines ? getFrequencies(4) : getFrequencies(1)
+        const frequencies = getFrequencies(graphs[typeGraph].indexDefaultFrequency)
         console.log(labels, frequencies);
 
-        const series = hasLines ? seriesWithLines(frequencies) : seriesDefault(frequencies)
+        const series = graphs[typeGraph].getSeries(frequencies)
         setConfig({
             ...config,
             // @ts-ignore
             series,
             scaleX: {
-                ...configTemp.scaleX,
+                ...config.scaleX,
                 labels
             },
         })
@@ -90,8 +90,19 @@ export const Histogram: React.FC<Props> = ({title, text, scaleXName, scaleYName,
 
     if (dataSet.length === 0) return null
     return (
-        <div className="histogram">
-            <ZingChart ref={chart} data={config}/>
+        <div className={"histogram"}>
+            <div className={'title custom-select'}>
+                <span>{title}</span>
+                <select className={'selector'}>
+                    <option value="0">fi</option>
+                    <option value="1">fri</option>
+                    <option value="2">Fi</option>
+                    <option value="3">Fri</option>
+                </select>
+            </div>
+            <div className={'graph'}>
+                <ZingChart ref={chart} data={config}/>
+            </div>
         </div>
     )
 }
