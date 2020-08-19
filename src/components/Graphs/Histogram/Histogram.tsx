@@ -70,7 +70,9 @@ export const Histogram: React.FC<Props> = ({title, text, scaleXName, scaleYName,
 
     useEffect(() => {
         const labels = frequencyTable.map((freq) => freq[Object.keys(columnsTable)[0]]);
-        const frequencies = frequencyTable.map((freq) => freq[Object.keys(columnsTable)[1]]).map(str => parseFloat(str));
+
+        const getFrequencies = (index: number) => frequencyTable.map((freq) => freq[Object.keys(columnsTable)[index]]).map(str => parseFloat(str))
+        const frequencies = hasLines ? getFrequencies(4) : getFrequencies(1)
         console.log(labels, frequencies);
 
         const series = hasLines ? seriesWithLines(frequencies) : seriesDefault(frequencies)
