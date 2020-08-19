@@ -8,6 +8,7 @@
     color: $text-color;
     display: flex;
     align-items: center;
+    cursor: pointer;
 
     i {
       cursor: pointer;
@@ -26,6 +27,11 @@
     font-size: 0.88rem;
     color: $background-color;
     white-space: pre-wrap;
+
+    &.hide {
+      display: none;
+      padding: 0;
+    }
 
     strong {
       font-weight: 600;

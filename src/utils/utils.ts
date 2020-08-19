@@ -2,8 +2,9 @@ export const onlyUnique = (value: any, index: number, self: any) => {
     return self.indexOf(value) === index;
 }
 
-export const formatNumber = (num: number): string => {
-    return (Math.round((num + Number.EPSILON) * 100000) / 100000).toString()
+export const formatNumber = (num: number, precision: number = 5): string => {
+    const n = Math.pow(10, precision);
+    return (Math.round((num + Number.EPSILON) * n) / n).toString()
 }
 
 export interface HashTable<T> {

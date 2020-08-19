@@ -268,9 +268,10 @@ export const mainReducer = createReducer(
         },
         [setUseIntervals.type]: (state, action) => {
             if (action.payload === state.useIntervals) return state
+            const values = calculateValues(state.dataSet, action.payload)
             return {
                 ...state,
-                useIntervals: action.payload
+                ...values
             }
         }
     }
@@ -402,10 +403,10 @@ const getModeForInterval = (basicFrequencies: Array<BasicFrequenciesInterval>) =
         }
     });
     if (categoriasMaxfri.length === 1) {
-        return "moda=" + categoriasMaxfri[0].mi;
+        return categoriasMaxfri[0].mi;
     }
     // @ts-ignore
-    return categoriasMaxfri.map((catModal, index) => " M0" + index + "=" + catModal.mi).reduce(((previousValue, currentValue) => previousValue + currentValue));
+    return categoriasMaxfri.map((catModal) => catModal.mi).join(", ");
 }
 
 const getModeForClass = (basicFrequencies: Array<BasicFrequenciesClasses>) => {
@@ -419,10 +420,10 @@ const getModeForClass = (basicFrequencies: Array<BasicFrequenciesClasses>) => {
         }
     });
     if (categoriasMaxfri.length === 1) {
-        return "moda=" + categoriasMaxfri[0].xi;
+        return categoriasMaxfri[0].xi;
     }
     // @ts-ignore
-    return categoriasMaxfri.map((catModal, index) => " M0" + index + "=" + catModal.xi).reduce(((previousValue, currentValue) => previousValue + currentValue));
+    return categoriasMaxfri.map((catModal) => catModal.xi).join(", ");
 }
 
 function getFromVariance(variance: number, mean: number, median: number) {
@@ -432,7 +433,7 @@ function getFromVariance(variance: number, mean: number, median: number) {
     return {stdDeviation, cv, asp};
 }
 
-const calculateValues = (dataset: Array<number>): { useIntervals: boolean; dataSummary: DataSummary, frequencyTable: FrequencyTable } => {
+const calculateValues = (dataset: Array<number>, forceUseIntervals: boolean | null = null): { useIntervals: boolean; dataSummary: DataSummary, frequencyTable: FrequencyTable } => {
     const numItems = dataset.length;
     let {vMin, vMax} = getExtremes(dataset);
     const range = vMax - vMin;
@@ -450,7 +451,13 @@ const calculateValues = (dataset: Array<number>): { useIntervals: boolean; dataS
     let fromVariance
 
     const classes = dataset.filter(onlyUnique);
-    const useIntervals = classes.length >= 15
+
+    let useIntervals: boolean
+    if (forceUseIntervals != null) {
+        useIntervals = forceUseIntervals
+    } else {
+        useIntervals = classes.length >= 15
+    }
 
     if (useIntervals) {
         const basicFrequencies: Array<BasicFrequenciesInterval> = []
@@ -499,7 +506,7 @@ const calculateValues = (dataset: Array<number>): { useIntervals: boolean; dataS
         let lastAbsoluteFrequency = 0
         let sum_xifi = 0
 
-        classes.forEach((xi) => {
+        classes.sort((a, b) => a - b).forEach((xi) => {
             const frequencies = getBasicFrequenciesForClasses(xi, lastAbsoluteFrequency, dataset)//frequencyTable.push([category, ...Object.values(frequencies).map(num => num.toString())])
             basicFrequencies.push(frequencies)
             lastAbsoluteFrequency = frequencies.Fi

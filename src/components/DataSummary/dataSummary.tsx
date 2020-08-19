@@ -54,7 +54,7 @@ export const DataSummary = () => {
                         <span>{formatNumber(dataSummary.stdDeviation)}</span>
                     </td>
                     <td colSpan={1}>
-                        <span>{formatNumber(dataSummary.cv)}</span>
+                        <span>{formatNumber(dataSummary.cv, 3)+"%"}</span>
                     </td>
                     <td colSpan={1}>
                         <span>{formatNumber(dataSummary.asp)}</span>
