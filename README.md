@@ -1,4 +1,5 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Generador de tablas de frecuencia 
+[enlace](https://nifty-colden-7596f8.netlify.app/).
 
 ## Available Scripts
 

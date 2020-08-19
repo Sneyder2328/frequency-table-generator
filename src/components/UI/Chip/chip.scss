@@ -1,14 +1,15 @@
 @import "../../../utils/variables";
 
 .chip {
-  background-color: #a7d3ff;
+  background-color: $background-color-light;
   margin-right: 8px;
   border-radius: 15px;
-  padding: 6px 10px;
+  padding: 6px 11px;
   color: $text-color;
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.15s ease-in-out;
+  user-select: none;
 
   &.active {
     background-color: $background-color;
