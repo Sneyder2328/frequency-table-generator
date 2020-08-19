@@ -35,7 +35,33 @@ class Actions extends React.Component {
         // dataString tiene la informacion del csv raw, en un String
         let dataString = event.target.result;
         //parsedData tiene la informacion del csv parsed a un JSON
-        let parsedData = dataString.split(",");
+        let parsedData = dataString.split(/\n|,/);
+        //csvData tiene toda la informacion del csv organizado en un objeto
+        let csvData = {
+          dataset: parsedData.slice(1, parsedData.indexOf("usandoIntervalos")),
+          usandoIntervalos:
+            parsedData[parsedData.indexOf("usandoIntervalos") + 1],
+          fi: parsedData.slice(
+            parsedData.indexOf("fi") + 1,
+            parsedData.indexOf("fri")
+          ),
+          fri: parsedData.slice(
+            parsedData.indexOf("fri") + 1,
+            parsedData.indexOf("Fi")
+          ),
+          Fi: parsedData.slice(
+            parsedData.indexOf("Fi") + 1,
+            parsedData.indexOf("Fri")
+          ),
+          Fri: parsedData.slice(
+            parsedData.indexOf("Fri") + 1,
+            parsedData.indexOf("media")
+          ),
+          media: parsedData[parsedData.indexOf("media") + 1],
+          moda: parsedData[parsedData.indexOf("moda") + 1],
+          mediana: parsedData[parsedData.indexOf("mediana") + 1],
+          varianza: parsedData[parsedData.indexOf("varianza") + 1],
+        };
       }.bind(this);
       reader.readAsText(file);
     } else {
