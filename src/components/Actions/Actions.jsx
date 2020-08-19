@@ -19,12 +19,10 @@ class Actions extends React.Component {
     this.state = {
       regexFiles: regexFiles,
       acceptedFilesString: acceptedFilesString,
-      loadingState: "none",
     };
   }
   //IMPORT CSV
   onChangeCSV(event) {
-    this.setState({ loadingState: "show" });
     let fileName = event.target.files[0].name;
     if (
       this.state.regexFiles.test(
@@ -38,7 +36,6 @@ class Actions extends React.Component {
         let dataString = event.target.result;
         //parsedData tiene la informacion del csv parsed a un JSON
         let parsedData = dataString.split(",");
-        this.setState({ loadingState: "none" });
       }.bind(this);
       reader.readAsText(file);
     } else {
@@ -82,20 +79,30 @@ class Actions extends React.Component {
   //DOWNLOAD PDF
   savePDF(event) {
     let element = event.target;
+    let hasError = 0;
     while (element.parentElement) element = element.parentElement;
     html2canvas(element).then((canvas) => {
       //PENDIENTE ELIMINAR POR SI NO TIENE UTILIDAD
       let body = element.cloneNode(true);
-      this.removeChildElement(body, "App", "data-entry");
-      this.removeChildElement(body, "App", "columns-selector");
-      html2pdf(body);
+      hasError += this.removeChildElement(body, "App", "data-entry");
+      hasError += this.removeChildElement(body, "App", "columns-selector");
+      hasError > 0
+        ? alert("ingrese el set de datos por favor")
+        : html2pdf(body);
     });
   }
 
   removeChildElement(body, parentElementClass, childElementClass) {
-    body
-      .getElementsByClassName(parentElementClass)[0]
-      .removeChild(body.getElementsByClassName(childElementClass)[0]);
+    if (
+      body.getElementsByClassName(parentElementClass)[0] &&
+      body.getElementsByClassName(childElementClass)[0]
+    ) {
+      body
+        .getElementsByClassName(parentElementClass)[0]
+        .removeChild(body.getElementsByClassName(childElementClass)[0]);
+      return 1;
+    }
+    return 0;
   }
 
   render() {
@@ -124,12 +131,6 @@ class Actions extends React.Component {
         <button className="btn ActionBtn" onClick={this.savePDF}>
           Descargar PDF
         </button>
-        <p
-          className={this.state.loadingState}
-          style={{ margin: "0.5rem 2rem" }}
-        >
-          Loading...
-        </p>
       </div>
     );
   }
