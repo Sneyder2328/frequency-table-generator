@@ -24,19 +24,19 @@ export const App = () => {
                 <DataSet/>
                 <GraphicsSelector/>
                 <Histogram
-                    title={'Frecuencias'}
-                    labels={["1", "5", "4", "7"]}
-                    series={[2, 8, 6, 4]}
+                    title={'Histograma'}
                     scaleXName={"nombre var"}
                     scaleYName={"fi"}
                     text={"subtitulo"}
+                    hasLines={false}
                 />
-                {/*<Histogram title="title" */}
-                {/*           text="text" */}
-                {/*           labels={[1, 2, 3, 4]} */}
-                {/*           scaleXName="scale x" */}
-                {/*           scaleYName="scale y"*/}
-                {/*           series={[{values: [1, 2, 3]}]}/>*/}
+                <Histogram
+                    title={'Columnas con lineas'}
+                    scaleXName={"nombre var"}
+                    scaleYName={"fi"}
+                    text={"subtitulo"}
+                    hasLines={true}
+                />
 
 
             </div>

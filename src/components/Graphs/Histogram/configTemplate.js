@@ -1,31 +1,29 @@
 export const configTemp = {
-  type: "bar",
-  title: {
-    text: "this is the title",
-  },
-  subtitle: {
-    text: "this is the details",
-  },
-  scaleX: {
-    labels: ["1", "2", "5"],
-    guide: {
-      backgroundColor: "#e6fcff #96efff",
-      lineColor: "red",
-      lineStyle: "solid",
-      lineWidth: 1,
-      visible: false,
+    title: {
+        text: "this is the title",
     },
-    label: {
-      text: "scale X",
+    subtitle: {
+        text: "this is the details",
     },
-  },
-  scaleY: {
-    label: {
-      text: "scale Y",
+    scaleX: {
+        labels: ["1", "2", "5"],
+        guide: {
+            backgroundColor: "#e6fcff #96efff",
+            lineColor: "red",
+            lineStyle: "solid",
+            lineWidth: 1,
+            visible: false,
+        },
+        label: {
+            text: "scale X",
+        },
     },
-  },
-  plot: {
-    aspect: "spline",
-  },
-  series: [{ values: [1, 2, 3] }],
+    scaleY: {
+        label: {
+            text: "scale Y",
+        },
+    },
+    plot: {
+        aspect: "spline",
+    }
 };
