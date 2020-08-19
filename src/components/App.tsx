@@ -7,6 +7,8 @@ import {store} from "../store";
 import {Legend} from "./Legend/legend";
 import {DataSet} from "./DataSet/dataSet";
 import {GraphicsSelector} from "./GraphicsSelector/graphicsSelector";
+import {FrequencyTable} from "./FrequencyTable/frequencyTable";
+import {DataSummary} from "./DataSummary/dataSummary";
 
 export const App = () => {
     return (
@@ -15,6 +17,8 @@ export const App = () => {
                 <AppHeader/>
                 <DataEntry/>
                 <ColumnsSelector/>
+                <FrequencyTable/>
+                <DataSummary/>
                 <Legend/>
                 <DataSet/>
                 <GraphicsSelector/>
