@@ -1,5 +1,5 @@
 const configTemp = {
-  type: "bar",
+  type: "mixed",
   title: {
     text: "this is the title",
   },
@@ -24,10 +24,18 @@ const configTemp = {
       text: "scale Y",
     },
   },
-  plot: {
-    aspect: "spline",
-  },
-  series: [{ values: [1, 2, 3] }],
+  series: [
+    {
+      type: "bar",
+      values: [59, 70, 40, 75, 33, 50, 65],
+      "bar-width": "50%",
+    },
+    {
+      type: "line",
+      values: [49, 30, 21, 15, 59, 51, 69],
+      aspect: "spline",
+    },
+  ],
 };
 
 export default configTemp;

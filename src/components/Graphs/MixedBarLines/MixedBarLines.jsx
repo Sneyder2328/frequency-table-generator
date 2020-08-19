@@ -5,15 +5,17 @@ import "zingchart-react/dist/modules/zingchart-depth.min.js";
 import configTemp from "./configTemplate.js";
 import ZingChart from "zingchart-react";
 
-class Pie extends React.Component {
+class Histogram extends React.Component {
   constructor(props) {
     super(props);
     let config = configTemp;
-    config.series = this.props.series;
     config.scaleX.labels = this.props.labels;
     config.title.text = this.props.title;
     config.subtitle.text = this.props.text;
-
+    config.scaleX.label.text = this.props.scaleXName;
+    config.scaleY.label.text = this.props.scaleYName;
+    config.series[0].values = this.props.barValues;
+    config.series[1].values = this.props.lineValues;
     this.state = { config: config };
     this.chart = React.createRef();
   }
@@ -27,4 +29,4 @@ class Pie extends React.Component {
   }
 }
 
-export default Pie;
+export default Histogram;
