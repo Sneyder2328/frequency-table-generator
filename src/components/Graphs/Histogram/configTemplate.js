@@ -1,4 +1,4 @@
-const configTemp = {
+export const configTemp = {
   type: "bar",
   title: {
     text: "this is the title",
@@ -7,13 +7,14 @@ const configTemp = {
     text: "this is the details",
   },
   scaleX: {
-    labels: [1, 2, 3, 4],
+    //labels: [1, 2, 3, 4],
+    labels: ["1", "2", "5"],
     guide: {
-      backgroundColor: "#ffe6e6 #ffcccc",
+      backgroundColor: "#e6fcff #96efff",
       lineColor: "red",
       lineStyle: "solid",
       lineWidth: 1,
-      visible: true,
+      visible: false,
     },
     label: {
       text: "scale X",
@@ -29,5 +30,3 @@ const configTemp = {
   },
   series: [{ values: [1, 2, 3] }],
 };
-
-export default configTemp;
