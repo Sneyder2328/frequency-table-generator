@@ -1,5 +1,6 @@
+
+
 const configTemp = {
-  type: "mixed",
   title: {
     text: "this is the title",
   },
@@ -23,19 +24,7 @@ const configTemp = {
     label: {
       text: "scale Y",
     },
-  },
-  series: [
-    {
-      type: "bar",
-      values: [59, 70, 40, 75, 33, 50, 65],
-      "bar-width": "50%",
-    },
-    {
-      type: "line",
-      values: [49, 30, 21, 15, 59, 51, 69],
-      aspect: "spline",
-    },
-  ],
+  }
 };
 
 export default configTemp;
