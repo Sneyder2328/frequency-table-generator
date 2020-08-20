@@ -10,7 +10,7 @@ export const processDataSet = createAction<Array<number>>("PROCESS_DATA_SET")
 
 const convertToArray = (data: string): Array<number> => {
     if (data === "") return []
-    let arr = data.replace(/,+/g, " ").replace(/\s+/g, " ").trim()
+    let arr = data.replace(/,+|-|\s+/g, " ").replace(/\s+/g, " ").trim()
     console.log(arr);
     return arr.split(" ").map(it => parseFloat(it))
 }
