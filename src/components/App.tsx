@@ -10,6 +10,7 @@ import {GraphicsSelector} from "./GraphicsSelector/graphicsSelector";
 import {FrequencyTable} from "./FrequencyTable/frequencyTable";
 import {DataSummary} from "./DataSummary/dataSummary";
 import {Graphs} from "./Graphs/graphs";
+import Actions from "./Actions/Actions"
 
 export const App = () => {
     return (
@@ -22,6 +23,7 @@ export const App = () => {
                 <DataSummary/>
                 <Legend/>
                 <DataSet/>
+                <Actions/>
                 <GraphicsSelector/>
                 <Graphs/>
             </div>
