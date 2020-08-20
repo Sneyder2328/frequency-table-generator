@@ -3,6 +3,7 @@ import "./dataEntry.scss"
 import classNames from "classnames";
 import {createAction} from "@reduxjs/toolkit";
 import {useDispatch} from "react-redux";
+import {useHistory} from 'react-router-dom';
 
 export const cleanAll = createAction("CLEAN_ALL")
 export const processDataSet = createAction<Array<number>>("PROCESS_DATA_SET")
@@ -19,6 +20,7 @@ export const DataEntry = () => {
     const [arrayNums, setArrayNums] = useState<Array<number>>([])
     const [isInputValid, setValidInput] = useState(true)
     const dispatch = useDispatch()
+    const history = useHistory();
 
     useEffect(() => {
         const dataset = convertToArray(data.trim())
@@ -33,16 +35,16 @@ export const DataEntry = () => {
     }
 
     const handleCalc = () => {
-        if (arrayNums.length === 0) {
-            handleClean()
-        } else {
-            dispatch(processDataSet(arrayNums))
-        }
+        history.push("/?dataset=" + arrayNums.join("-"))
+        //dispatch(processDataSet(arrayNums))
     }
 
     const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
         const key = event.key || event.keyCode;
-        if (isInputValid && (key === "Enter" || key === 13)) handleCalc()
+        if (isInputValid && (key === "Enter" || key === 13)) {
+            if (arrayNums.length === 0) handleClean()
+            else handleCalc()
+        }
     };
 
     return (
