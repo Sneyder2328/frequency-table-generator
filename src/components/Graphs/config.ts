@@ -1,7 +1,8 @@
 const HISTOGRAM = 'Histograma'
 const SECTORS = 'Sectores'
 const LINES = 'Lineas'
-const MIXED = 'Columnas con lineas'
+const MIXED = 'ColumnasConLineas'
+
 export const configGraphs = {
     [HISTOGRAM]: {
         scaleX: {

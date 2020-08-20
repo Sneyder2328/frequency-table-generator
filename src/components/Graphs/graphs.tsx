@@ -1,5 +1,4 @@
 import React from "react";
-import Line from "./Lines/Line"
 import {useSelector} from "react-redux";
 import {AppState} from "../../mainReducer";
 import {HashTable} from "../../utils/utils";
@@ -9,7 +8,7 @@ import {Graph} from "./Graph/Graph";
 export const HISTOGRAM = 'Histograma'
 export const SECTORS = 'Sectores'
 export const LINES = 'Lineas'
-export const MIXED = 'Columnas con lineas'
+export const MIXED = 'ColumnasConLineas'
 
 type GraphConfig = {
     type: string;
@@ -78,39 +77,35 @@ export const Graphs = () => {
     const {graphicsList} = useSelector((state: AppState) => state)
 
     return (
-        <>
+        <div>
             <Graph
-                title={'Histograma'}
+                isHidden={!graphicsList[HISTOGRAM].active}
+                title={HISTOGRAM}
                 scaleXName={"nombre var"}
                 scaleYName={"fi"}
                 text={"subtitulo"}
-                typeGraph={HISTOGRAM}
-            />
+                typeGraph={HISTOGRAM}/>
             <Graph
-                title={'Sectores'}
+                isHidden={!graphicsList[SECTORS].active}
+                title={SECTORS}
                 scaleXName={"nombre var"}
                 scaleYName={"fi"}
                 text={"subtitulo"}
                 typeGraph={SECTORS}/>
             <Graph
-                title={'Lineas'}
+                isHidden={!graphicsList[LINES].active}
+                title={LINES}
                 scaleXName={"nombre var"}
                 scaleYName={"fi"}
                 text={"subtitulo"}
                 typeGraph={LINES}/>
             <Graph
-                title={'Columnas con lineas'}
+                isHidden={!graphicsList[MIXED].active}
+                title={MIXED}
                 scaleXName={"nombre var"}
                 scaleYName={"fi"}
                 text={"subtitulo"}
                 typeGraph={MIXED}/>
-            {/*<Line title="title" text="text" scaleXName="scale x" scaleYName="scale y" textOnMouseX="scaleX"*/}
-            {/*      textOnMouseY="scaleY" series={[[1, 2], [1.5, 4], [2, 7], [2.5, 8], [3, 9], [3.5, 10], [4, 15]]}/>*/}
-            {/*<Pie title="title" text="text" labels={[1, 2, 3, 4]}*/}
-            {/*     series={[{values: [10], text: "Alpha"}, {values: [20], text: "Beta"}, {*/}
-            {/*         values: [40],*/}
-            {/*         text: "Theta"*/}
-            {/*     },]}/>*/}
-        </>
+        </div>
     )
 }

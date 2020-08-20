@@ -4,6 +4,7 @@ import {toggleGraphicsActive} from "./components/GraphicsSelector/graphicsSelect
 import {cleanAll, processDataSet} from "./components/DataEntry/dataEntry";
 import {formatNumber, HashTable, onlyUnique} from "./utils/utils";
 import {nanoid} from '@reduxjs/toolkit'
+import {HISTOGRAM, LINES, MIXED, SECTORS} from "./components/Graphs/graphs";
 
 const defaultColumnsIntervals = {
     [nanoid()]: {
@@ -86,25 +87,24 @@ const defaultColumnsClasses = {
         active: true
     }
 }
-const defaultGraphics = [
-    {
-        label: "Histograma",
+const defaultGraphics = {
+    [HISTOGRAM]: {
+        label: HISTOGRAM,
         active: true
     },
-    {
-        label: "Sectores",
+    [SECTORS]: {
+        label: SECTORS,
         active: false
     },
-    {
-        label: "Lineas",
+    [LINES]: {
+        label: LINES,
         active: false
     },
-    {
-        label: "Columnas con lineas",
+    [MIXED]: {
+        label: MIXED,
         active: false
     }
-]
-
+}
 
 export type Selection = { label: string; active: boolean };
 export type DataSummary = {
@@ -126,7 +126,7 @@ export type AppState = {
     useIntervals?: boolean;
     columnsTableByIntervals: HashTable<Selection>;
     columnsTableByClasses: HashTable<Selection>;
-    graphicsList: Array<Selection>;
+    graphicsList: HashTable<Selection>;
     frequencyTable: FrequencyTable;
     dataSummary?: DataSummary
 }
@@ -166,15 +166,13 @@ export const mainReducer = createReducer(
         [toggleGraphicsActive.type]: (state, action) => {
             return {
                 ...state,
-                graphicsList: state.graphicsList.map((column, index) => {
-                    if (index === action.payload) {
-                        return {
-                            label: column.label,
-                            active: !column.active
-                        }
+                graphicsList: {
+                    ...state.graphicsList,
+                    [action.payload]: {
+                        ...state.graphicsList[action.payload],
+                        active: !state.graphicsList[action.payload].active
                     }
-                    return column
-                })
+                }
             }
         },
         [cleanAll.type]: () => initialState,

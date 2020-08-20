@@ -41,20 +41,14 @@ type Props = {
     scaleXName: string;
     scaleYName: string;
     typeGraph: string;
+    isHidden: boolean;
 }
-export const Graph: React.FC<Props> = ({title, text, scaleXName, scaleYName, typeGraph}) => {
+export const Graph: React.FC<Props> = ({title, text, scaleXName, scaleYName, typeGraph, isHidden}) => {
     const [config, setConfig] = useState(
         {
             // @ts-ignore
             ...configGraphs[typeGraph],
             type: graphs[typeGraph].type,
-            // title: {text: title},
-            // subtitle: {text},
-            scaleX: {
-                // @ts-ignore
-                ...configGraphs[typeGraph].scaleX,
-                // label: {text: scaleXName}
-            },
             scaleY: {label: {text: scaleYName}}
         }
     )
@@ -88,10 +82,10 @@ export const Graph: React.FC<Props> = ({title, text, scaleXName, scaleYName, typ
 
     }, [frequencyTable])
 
-    if (dataSet.length === 0) return null
+    if (dataSet.length === 0 || isHidden) return null
     return (
-        <div className={"histogram"}>
-            <div className={'title custom-select'}>
+        <div className={"graph-container"}>
+            <div className={'title'}>
                 <span>{title}</span>
                 <select className={'selector'}>
                     <option value="0">fi</option>
