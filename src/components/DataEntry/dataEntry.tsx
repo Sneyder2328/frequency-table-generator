@@ -3,13 +3,15 @@ import "./dataEntry.scss"
 import classNames from "classnames";
 import {createAction} from "@reduxjs/toolkit";
 import {useDispatch} from "react-redux";
+import {useHistory} from 'react-router-dom';
+import {Button} from "../UI/Button/button";
 
 export const cleanAll = createAction("CLEAN_ALL")
 export const processDataSet = createAction<Array<number>>("PROCESS_DATA_SET")
 
 const convertToArray = (data: string): Array<number> => {
     if (data === "") return []
-    let arr = data.replace(/,+/g, " ").replace(/\s+/g, " ").trim()
+    let arr = data.replace(/,+|-|\s+/g, " ").replace(/\s+/g, " ").trim()
     console.log(arr);
     return arr.split(" ").map(it => parseFloat(it))
 }
@@ -19,6 +21,7 @@ export const DataEntry = () => {
     const [arrayNums, setArrayNums] = useState<Array<number>>([])
     const [isInputValid, setValidInput] = useState(true)
     const dispatch = useDispatch()
+    const history = useHistory();
 
     useEffect(() => {
         const dataset = convertToArray(data.trim())
@@ -33,26 +36,28 @@ export const DataEntry = () => {
     }
 
     const handleCalc = () => {
-        if (arrayNums.length === 0) {
-            handleClean()
-        } else {
-            dispatch(processDataSet(arrayNums))
-        }
+        history.push("/?dataset=" + arrayNums.join("-"))
+        //dispatch(processDataSet(arrayNums))
     }
 
     const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
         const key = event.key || event.keyCode;
-        if (isInputValid && (key === "Enter" || key === 13)) handleCalc()
+        if (isInputValid && (key === "Enter" || key === 13)) {
+            if (arrayNums.length === 0) handleClean()
+            else handleCalc()
+        }
     };
 
     return (
         <div className={'data-entry'}>
             <input className={classNames('input', {'error': !isInputValid})} type='text' value={data}
                    onChange={(e) => setData(e.target.value)} onKeyDown={handleKeyDown}/>
-            <button className={classNames('btn', {'active': isInputValid && data.trim() !== ""})}
-                    onClick={() => isInputValid && handleCalc()}>Procesar
-            </button>
-            <button className={'active btn'} onClick={handleClean}>Limpiar</button>
+            <Button isActive={isInputValid && data.trim() !== ""}>
+                Procesar
+            </Button>
+            <Button onClick={handleClean}>
+                Limpiar
+            </Button>
         </div>
     )
 }
