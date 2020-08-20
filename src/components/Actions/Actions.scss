@@ -8,12 +8,11 @@
     font-size: 0.8rem;
     color: $text-color;
     text-align: center;
-    padding: 6px 8px;
-    margin-right: 14px;
+    padding: 0.4rem;
+    margin-left: 1rem;
+    border-radius: 5%;
     cursor: pointer;
     transition: 100ms linear;
-    border: none;
-    outline: none;
   }
 
   .ActionBtn:hover {
