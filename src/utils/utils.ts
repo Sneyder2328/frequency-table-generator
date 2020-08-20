@@ -1,3 +1,5 @@
+import { useLocation } from "react-router-dom";
+
 export const onlyUnique = (value: any, index: number, self: any) => {
     return self.indexOf(value) === index;
 }
@@ -34,3 +36,7 @@ export const convertToHashTable2 = <T>(array: Array<T>): HashTable<T> => {
         return {...pv, ...nv}
     });
 };
+
+export function useQuery() {
+    return new URLSearchParams(useLocation().search);
+}

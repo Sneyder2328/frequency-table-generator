@@ -3,7 +3,7 @@
 .data-entry {
   display: flex;
   justify-content: space-between;
-  padding-top: $margin*2;
+  padding-top: $margin * 2;
 
   &:before {
     content: "Ingrese set de datos (separar con espacio o comas y usar punto para nros decimales. ej: 5.5 6.2 8 9.5)";
@@ -36,7 +36,7 @@
   .btn {
     border: none;
     color: $text-color;
-    margin-left: $margin*0.8;
+    margin-left: $margin * 0.8;
     font-size: 1rem;
     background-color: $background-color-light;
     padding: 6px 20px;
@@ -44,12 +44,14 @@
     outline: none;
     font-weight: 500;
     transition: all 0.2s ease-in-out;
-
-    &.active{
+    font-family: "Roboto", sans-serif;
+    cursor: default;
+    &.active {
       background-color: $background-color;
     }
     &.active:hover {
       background-color: $background-color-hovered;
+      cursor: pointer;
     }
   }
 }
