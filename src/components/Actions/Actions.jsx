@@ -5,6 +5,8 @@ import html2pdf from "html2pdf.js";
 import variables from "./Variables.js";
 import {connect} from "react-redux";
 import {processDataSet} from "../DataEntry/dataEntry";
+import classNames from "classnames";
+import {Button} from "../UI/Button/button";
 
 class Actions extends React.Component {
     constructor(props) {
@@ -46,7 +48,7 @@ class Actions extends React.Component {
                     //     parsedData[parsedData.indexOf("usandoIntervalos") + 1]
                 };
                 console.log(csvData);
-                this.props.processDataSet(csvData.dataset.map((str)=>parseFloat(str)))
+                this.props.processDataSet(csvData.dataset.map((str) => parseFloat(str)))
             }.bind(this);
             reader.readAsText(file);
         } else {
@@ -161,21 +163,23 @@ class Actions extends React.Component {
                     accept={this.state.acceptedFilesString}
                     onChange={this.onChangeCSV}/>
 
-                <button className="btn ActionBtn" onClick={this.download}>
+                <Button isActive={this.props.dataSet.length !== 0} onClick={this.download}>
                     Exportar CSV
-                </button>
-
-                <button
-                    className="btn ActionBtn" onClick={this.uploadCSV}>
+                </Button>
+                <Button onClick={this.uploadCSV}>
                     Importar CSV
-                </button>
-
-                <button className="btn ActionBtn" onClick={this.savePDF}>
+                </Button>
+                <Button isActive={this.props.dataSet.length !== 0}  onClick={this.savePDF}>
                     Descargar PDF
-                </button>
+                </Button>
             </div>
         );
     }
 }
 
-export default connect(null, {processDataSet})(Actions);
+const mapStateToProps = (state) => {
+    return {
+        dataSet: state.dataSet
+    }
+}
+export default connect(mapStateToProps, {processDataSet})(Actions);

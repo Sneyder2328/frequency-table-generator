@@ -4,6 +4,7 @@ import classNames from "classnames";
 import {createAction} from "@reduxjs/toolkit";
 import {useDispatch} from "react-redux";
 import {useHistory} from 'react-router-dom';
+import {Button} from "../UI/Button/button";
 
 export const cleanAll = createAction("CLEAN_ALL")
 export const processDataSet = createAction<Array<number>>("PROCESS_DATA_SET")
@@ -51,10 +52,12 @@ export const DataEntry = () => {
         <div className={'data-entry'}>
             <input className={classNames('input', {'error': !isInputValid})} type='text' value={data}
                    onChange={(e) => setData(e.target.value)} onKeyDown={handleKeyDown}/>
-            <button className={classNames('btn', {'active': isInputValid && data.trim() !== ""})}
-                    onClick={() => isInputValid && handleCalc()}>Procesar
-            </button>
-            <button className={'active btn'} onClick={handleClean}>Limpiar</button>
+            <Button isActive={isInputValid && data.trim() !== ""}>
+                Procesar
+            </Button>
+            <Button onClick={handleClean}>
+                Limpiar
+            </Button>
         </div>
     )
 }

@@ -3,23 +3,10 @@
 .ActionButtons {
   padding-top: $margin;
 
-  .ActionBtn {
-    background-color: $background-color;
-    font-size: 1rem;
-    color: $text-color;
-    text-align: center;
+  .button {
     padding: 6px 10px;
     margin-right: 14px;
-    cursor: pointer;
-    transition: 100ms linear;
-    font-family: "Roboto",sans-serif;
-    font-weight: 500;
-    border: none;
-    outline: none;
-  }
-
-  .ActionBtn:hover {
-    background-color: $background-color-hovered;
+    margin-left: 0;
   }
 
   .show {
