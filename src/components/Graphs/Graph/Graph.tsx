@@ -10,31 +10,6 @@ import "./graph.scss"
 import {configGraphs} from "../config";
 import {graphs} from "../graphs";
 
-export const seriesWithLines = (values: Array<number>) => [
-    {
-        type: "bar",
-        values,
-        "bar-width": "60%",
-    },
-    {
-        type: "line",
-        values,
-        aspect: "spline",
-        'line-color': "#66CCFF",
-        marker: {
-            size: 4,
-            'background-color': "#66CCFF #3480fa",
-            'border-color': "white"
-        }
-    }
-]
-export const seriesDefault = (values: Array<number>) => [
-    {
-        values,
-        "bar-width": "60%",
-    }
-];
-
 type Props = {
     title: string;
     text: string;
