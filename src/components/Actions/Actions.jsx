@@ -154,7 +154,7 @@ class Actions extends React.Component {
       hasError += this.removeChildElement(body, "App", "columns-selector");
       hasError > 0
         ? alert("ingrese el set de datos por favor")
-        : html2pdf(element, opt);
+        : html2pdf(canvas);
     });
   }
 
