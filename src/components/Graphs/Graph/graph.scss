@@ -1,0 +1,25 @@
+@import "src/utils/variables";
+
+.graph-container {
+  padding-top: $margin;
+
+  .title {
+    cursor: default;
+    display: flex;
+    justify-content: space-between;
+
+    * {
+      margin: 4px 8px;
+    }
+
+    .selector {
+      outline: none;
+      font-size: 1rem;
+    }
+  }
+
+  .graph {
+    border: 1px $background-color solid;
+  }
+
+}
