@@ -11,6 +11,7 @@ import { FrequencyTable } from "./FrequencyTable/frequencyTable";
 import { DataSummary } from "./DataSummary/dataSummary";
 import { Graphs } from "./Graphs/graphs";
 import Actions from "./Actions/Actions";
+
 export const App = () => {
   return (
     <Provider store={store}>
