@@ -1,7 +1,7 @@
 const HISTOGRAM = 'Histograma'
 const SECTORS = 'Sectores'
 const LINES = 'Lineas'
-const MIXED = 'Columnas Con Lineas'
+const MIXED = 'ColumnasConLineas'
 
 export const configGraphs = {
     [HISTOGRAM]: {

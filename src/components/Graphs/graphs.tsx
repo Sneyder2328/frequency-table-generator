@@ -8,7 +8,7 @@ import {Graph} from "./Graph/Graph";
 export const HISTOGRAM = 'Histograma'
 export const SECTORS = 'Sectores'
 export const LINES = 'Lineas'
-export const MIXED = 'Columnas Con Lineas'
+export const MIXED = 'ColumnasConLineas'
 
 type GraphConfig = {
     type: string;
