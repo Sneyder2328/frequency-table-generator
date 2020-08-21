@@ -3,7 +3,7 @@
 .data-entry {
   display: flex;
   justify-content: space-between;
-  padding-top: $margin*2;
+  padding-top: $margin * 2;
 
   &:before {
     content: "Ingrese set de datos (separar con espacio o comas y usar punto para nros decimales. ej: 5.5 6.2 8 9.5)";
