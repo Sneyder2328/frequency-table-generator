@@ -190,12 +190,6 @@ class Actions extends React.Component {
         const csvData = {
             dataset: this.props.dataSet,
             // usandoIntervalos: 1,
-            fi: [1, 2, 3, 4],
-            fri: [1, 2, 34, 5, 6],
-            Fi: [1, 2, 3, 4],
-            Fri: [1, 2, 3, 4],
-            xifi: [1, 2, 3, 4],
-            // "xi-x̄": [1, 2, 3, 4], TODO special characters require a library
             media: this.props.dataSummary.mean,
             moda: this.props.dataSummary.mode,
             mediana: this.props.dataSummary.median,
