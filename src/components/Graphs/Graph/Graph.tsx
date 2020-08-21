@@ -60,7 +60,7 @@ export const Graph: React.FC<Props> = ({title, text, scaleXName, scaleYName, typ
     if (dataSet.length === 0 || isHidden) return null
     return (
         <div className={"graph-container"}>
-            <div className={'title'}>
+            <div className={'section-title'}>
                 <span>{title}</span>
                 <select className={'selector'}>
                     <option value="0">fi</option>

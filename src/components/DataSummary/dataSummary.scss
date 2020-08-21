@@ -1,5 +1,24 @@
 @import "src/utils/variables";
 
-.data-summary{
+.data-summary {
   padding-top: $margin;
+  overflow-x: auto;
+}
+
+@media (min-width: $phone) and (max-width: $tablet) {
+  .data-summary .table {
+
+  }
+}
+
+@media (min-width: $tablet) and (max-width: $desktop) {
+  .data-summary .table {
+
+  }
+}
+
+@media (min-width: $desktop) {
+  .data-summary .table {
+
+  }
 }

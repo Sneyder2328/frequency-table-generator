@@ -3,18 +3,31 @@
 html, body {
   width: 100%;
   height: 100%;
+  font-family: 'Roboto', sans-serif;
 }
 
-body {
-  font-family: 'Roboto', sans-serif;
+#root .App {
+  width: 95%;
+  margin: 0 auto;
+  padding-bottom: $margin;
+}
 
-  #root {
+@media (min-width: $phone) and (max-width: $tablet) {
+  #root .App {
+    width: 90%;
+  }
+}
 
-    .App {
-      width: 70%;
-      margin: 0 auto;
-      padding-bottom: $margin;
-    }
+@media (min-width: $tablet) and (max-width: $desktop) {
+  #root .App {
+    width: 80%;
+    max-width: 1000px;
+  }
+}
+@media (min-width: $desktop) {
+  #root .App {
+    width: 70%;
+    max-width: 1150px;
   }
 }
 
@@ -42,7 +55,7 @@ body {
   }
 }
 
-.title {
+.section-title {
   background-color: $background-color;
   color: $text-color;
   display: flex;

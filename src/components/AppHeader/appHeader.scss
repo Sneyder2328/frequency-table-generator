@@ -4,10 +4,17 @@
   padding-top: $margin;
   
   .title {
-    padding: 8px 25px;
+    padding: 8px;
     background-color: $background-color;
     font-size: 2rem;
     color: $text-color;
     text-align: center;
+  }
+}
+
+@media (max-width: $tablet) {
+  .app-header .title {
+    font-size: 1.7rem;
+    padding: 6px;
   }
 }

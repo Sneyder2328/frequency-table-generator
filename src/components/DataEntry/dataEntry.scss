@@ -33,3 +33,10 @@
     }
   }
 }
+
+@media (max-width: $tablet) {
+  .data-entry:before {
+    top: 85px;
+    font-size: 0.6rem;
+  }
+}
