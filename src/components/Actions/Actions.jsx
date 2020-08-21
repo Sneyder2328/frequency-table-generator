@@ -28,47 +28,52 @@ class Actions extends React.Component {
 
     //IMPORT CSV
     onChangeCSV(event) {
-        let fileName = event.target.files[0].name;
-        if (
-            this.state.regexFiles.test(
-                fileName.substring(fileName.length - 4, fileName.length)
-            )
-        ) {
-            let file = event.target.files[0];
-            let reader = new FileReader();
-            reader.onload = function (event) {
-                // dataString tiene la informacion del csv raw, en un String
-                let dataString = event.target.result;
-                //parsedData tiene la informacion del csv parsed a un JSON
-                let parsedData = dataString.split(/\n|,/);
-                //csvData tiene toda la informacion del csv organizado en un objeto
-                let csvData = {
-                    dataset: parsedData.slice(1, parsedData.indexOf("usandoIntervalos")),
-                    // usandoIntervalos:
-                    //     parsedData[parsedData.indexOf("usandoIntervalos") + 1]
-                };
-                console.log(csvData);
-                this.props.processDataSet(csvData.dataset.map((str) => parseFloat(str)))
-            }.bind(this);
-            reader.readAsText(file);
-        } else {
-            event.target.value = "";
-            alert(
-                "Este no es un archivo soportado, por favor use los validos: " +
-                this.state.acceptedFilesString
-            );
+        if (event.target) {
+            let fileName = event.target.files[0].name;
+            if (
+                this.state.regexFiles.test(
+                    fileName.substring(fileName.length - 4, fileName.length)
+                )
+            ) {
+                let file = event.target.files[0];
+                let reader = new FileReader();
+                reader.onload = function (event) {
+                    // dataString tiene la informacion del csv raw, en un String
+                    let dataString = event.target.result;
+                    //parsedData tiene la informacion del csv parsed a un JSON
+                    let parsedData = dataString.split(/\n|,/);
+                    //csvData tiene toda la informacion del csv organizado en un objeto
+                    let csvData = {
+                        dataset: parsedData.slice(1, parsedData.indexOf("usandoIntervalos")),
+                        // usandoIntervalos:
+                        //     parsedData[parsedData.indexOf("usandoIntervalos") + 1]
+                    };
+                    console.log(csvData);
+                    this.props.processDataSet(csvData.dataset.map((str) => parseFloat(str)))
+                }.bind(this);
+                reader.readAsText(file);
+            } else {
+                event.target.value = "";
+                alert(
+                    "Este no es un archivo soportado, por favor use los validos: " +
+                    this.state.acceptedFilesString
+                );
+            }
         }
     }
 
     uploadCSV(event) {
-        let fileInput = event.target.parentElement.firstChild;
-        if (fileInput.type == "file") {
-            fileInput.click();
-        } else console.log("there is a problem with the upload button");
+        if (event) {
+            console.log('event=', event);
+            let fileInput = event.target.parentElement.firstChild;
+            if (fileInput.type == "file") {
+                fileInput.click();
+            } else console.log("there is a problem with the upload button");
+        }
     }
 
     //EXPORT CSV
-    download(event) {
+    download() {
         let filename = variables.filename;
         //GET DATASET HERE TO EXPORT/ DUMMY DATA
         let csvData = {
@@ -169,7 +174,7 @@ class Actions extends React.Component {
                 <Button onClick={this.uploadCSV}>
                     Importar CSV
                 </Button>
-                <Button isActive={this.props.dataSet.length !== 0}  onClick={this.savePDF}>
+                <Button isActive={this.props.dataSet.length !== 0} onClick={this.savePDF}>
                     Descargar PDF
                 </Button>
             </div>

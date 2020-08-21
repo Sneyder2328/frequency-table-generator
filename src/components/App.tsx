@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {Provider, useDispatch} from 'react-redux';
+import {Provider, useDispatch, useSelector} from 'react-redux';
 import {AppHeader} from "./AppHeader/appHeader";
 import {DataEntry, processDataSet} from "./DataEntry/dataEntry";
 import {ColumnsSelector} from "./ColumnsSelector/columnsSelector";
@@ -11,14 +11,18 @@ import {FrequencyTable} from "./FrequencyTable/frequencyTable";
 import {DataSummary} from "./DataSummary/dataSummary";
 import {Graphs} from "./Graphs/graphs";
 import Actions from "./Actions/Actions"
-import {BrowserRouter as Router} from "react-router-dom";
+import {BrowserRouter as Router, useHistory} from "react-router-dom";
 import {useQuery} from "../utils/utils";
+import {AppState} from "../mainReducer";
 
 function InnerApp() {
     const query = useQuery();
     const dispatch = useDispatch()
+    const history = useHistory();
+    const dataSet = useSelector(((state: AppState) => state.dataSet))
 
     useEffect(() => {
+        console.log('loading from url');
         const dataset = query.get("dataset")
         if (dataset) {
             console.log("url changed", dataset);
@@ -26,7 +30,12 @@ function InnerApp() {
             console.log(arrayNums);
             dispatch(processDataSet(arrayNums))
         }
-    }, [query])
+    }, [])
+
+    useEffect(()=>{
+        console.log('dataset changes');
+        history.push("/?dataset=" + dataSet.join("-"))
+    }, [dataSet])
 
     return <div className="App">
         <AppHeader/>

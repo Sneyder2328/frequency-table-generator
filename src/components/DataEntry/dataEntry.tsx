@@ -21,7 +21,7 @@ export const DataEntry = () => {
     const [arrayNums, setArrayNums] = useState<Array<number>>([])
     const [isInputValid, setValidInput] = useState(true)
     const dispatch = useDispatch()
-    const history = useHistory();
+    //const history = useHistory();
 
     useEffect(() => {
         const dataset = convertToArray(data.trim())
@@ -31,13 +31,14 @@ export const DataEntry = () => {
     }, [data])
 
     const handleClean = () => {
+        console.log('cleaning');
         setData("")
         dispatch(cleanAll())
     }
 
     const handleCalc = () => {
-        history.push("/?dataset=" + arrayNums.join("-"))
-        //dispatch(processDataSet(arrayNums))
+        //history.push("/?dataset=" + arrayNums.join("-"))
+        dispatch(processDataSet(arrayNums))
     }
 
     const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
@@ -52,7 +53,7 @@ export const DataEntry = () => {
         <div className={'data-entry'}>
             <input className={classNames('input', {'error': !isInputValid})} type='text' value={data}
                    onChange={(e) => setData(e.target.value)} onKeyDown={handleKeyDown}/>
-            <Button isActive={isInputValid && data.trim() !== ""}>
+            <Button isActive={isInputValid && data.trim() !== ""} onClick={handleCalc}>
                 Procesar
             </Button>
             <Button onClick={handleClean}>
