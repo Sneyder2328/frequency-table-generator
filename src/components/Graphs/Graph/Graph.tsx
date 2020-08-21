@@ -12,15 +12,11 @@ import { graphs } from "../graphs";
 
 type Props = {
   title: string;
-  text: string;
-  scaleXName: string;
   typeGraph: string;
   isHidden: boolean;
 };
 export const Graph: React.FC<Props> = ({
   title,
-  text,
-  scaleXName,
   typeGraph,
   isHidden,
 }) => {

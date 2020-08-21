@@ -17,7 +17,7 @@ type GraphConfig = {
 }
 export const graphs: HashTable<GraphConfig> = {
     [HISTOGRAM]: {
-        indexDefaultFrequency: 0,//1,
+        indexDefaultFrequency: 0,
         frequencies: [
             {
                 label: "fi",
@@ -26,6 +26,14 @@ export const graphs: HashTable<GraphConfig> = {
             {
                 label: "fri",
                 index: 2,
+            },
+            {
+                label: "Fi",
+                index: 3,
+            },
+            {
+                label: "Fri",
+                index: 4,
             }
         ],
         getSeries(values) {
@@ -41,12 +49,12 @@ export const graphs: HashTable<GraphConfig> = {
         indexDefaultFrequency: 0,
         frequencies: [
             {
-                label: "fri",
-                index: 2,
+                label: "fi",
+                index: 1,
             },
             {
-                label: "Fri",
-                index: 4,
+                label: "fri",
+                index: 2,
             }
         ],
         getSeries(values, labels) {
@@ -55,8 +63,16 @@ export const graphs: HashTable<GraphConfig> = {
         }
     },
     [LINES]: {
-        indexDefaultFrequency: 0,
+        indexDefaultFrequency: 2,
         frequencies: [
+            {
+                label: "fi",
+                index: 1,
+            },
+            {
+                label: "fri",
+                index: 2,
+            },
             {
                 label: "Fi",
                 index: 3,
@@ -75,11 +91,19 @@ export const graphs: HashTable<GraphConfig> = {
         }
     },
     [MIXED]: {
-        indexDefaultFrequency: 1,
+        indexDefaultFrequency: 3,
         frequencies: [
+            {
+                label: "fi",
+                index: 1,
+            },
             {
                 label: "fri",
                 index: 2,
+            },
+            {
+                label: "Fi",
+                index: 3,
             },
             {
                 label: "Fri",
@@ -118,26 +142,18 @@ export const Graphs = () => {
             <Graph
                 isHidden={!graphicsList[HISTOGRAM].active}
                 title={HISTOGRAM}
-                scaleXName={"nombre var"}
-                text={"subtitulo"}
                 typeGraph={HISTOGRAM}/>
             <Graph
                 isHidden={!graphicsList[SECTORS].active}
                 title={SECTORS}
-                scaleXName={"nombre var"}
-                text={"subtitulo"}
                 typeGraph={SECTORS}/>
             <Graph
                 isHidden={!graphicsList[LINES].active}
                 title={LINES}
-                scaleXName={"nombre var"}
-                text={"subtitulo"}
                 typeGraph={LINES}/>
             <Graph
                 isHidden={!graphicsList[MIXED].active}
                 title={MIXED}
-                scaleXName={"nombre var"}
-                text={"subtitulo"}
                 typeGraph={MIXED}/>
         </div>
     )
