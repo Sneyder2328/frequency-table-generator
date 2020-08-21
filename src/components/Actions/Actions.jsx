@@ -1,124 +1,122 @@
 import React from "react";
 import "./Actions.scss";
-import html2canvas from "html2canvas";
-import jsPDF from "jspdf";
 import {connect} from "react-redux";
 import {processDataSet} from "../DataEntry/dataEntry";
 import {Button} from "../UI/Button/button";
 
-//DOWNLOAD PDF
-const savePDF = async (event) => {
-    let element = document.getElementsByClassName("app-header")[0];
-    let options = {scale: 2};
-    let canvas = await html2canvas(element, options);
-    //let imgData = canvas.toDataURL('image/jpeg', 1.0); //JPEG
-    let imgData = canvas.toDataURL("image/png");
-    console.log("wit=", element.offsetWidth, canvas);
-    const pdf = new jsPDF({
-        unit: "px",
-        format: [element.offsetWidth / 2, 800],
-        orientation: "portrait",
-    });
-    pdf.addImage(
-        imgData,
-        "PNG",
-        0,
-        0,
-        element.offsetWidth / 2,
-        element.offsetHeight / 2
-    );
-
-    let element2 = document.getElementsByClassName("frequency-table")[0];
-    let canvas2 = await html2canvas(element2, options);
-    let imgData2 = canvas2.toDataURL("image/png", 1.0);
-    pdf.addImage(
-        imgData2,
-        "PNG",
-        0,
-        element.offsetHeight / 2,
-        element2.offsetWidth / 2,
-        element2.offsetHeight / 2
-    );
-
-    let element3 = document.getElementsByClassName("data-summary")[0];
-    let canvas3 = await html2canvas(element3, options);
-    let imgData3 = canvas3.toDataURL("image/png", 1.0);
-    pdf.addImage(
-        imgData3,
-        "PNG",
-        0,
-        element.offsetHeight / 2 + element2.offsetHeight / 2,
-        element3.offsetWidth / 2,
-        element3.offsetHeight / 2
-    );
-
-    let element4 = document.getElementsByClassName("dataset")[0];
-    let canvas4 = await html2canvas(element4, options);
-    let imgData4 = canvas4.toDataURL("image/png", 1.0);
-    pdf.addImage(
-        imgData4,
-        "PNG",
-        0,
-        element.offsetHeight / 2 +
-        element2.offsetHeight / 2 +
-        element3.offsetHeight / 2,
-        element4.offsetWidth / 2,
-        element4.offsetHeight / 2
-    );
-
-    let element5 = document.getElementById("list-graphs");
-    let canvas5 = await html2canvas(element5, options);
-    let imgData5 = canvas5.toDataURL("image/png", 1.0);
-    pdf.addImage(
-        imgData5,
-        "PNG",
-        0,
-        element.offsetHeight / 2 +
-        element2.offsetHeight / 2 +
-        element3.offsetHeight / 2 +
-        element4.offsetHeight / 2,
-        element5.offsetWidth / 2,
-        element5.offsetHeight / 2
-    );
-
-    pdf.save(`siuuuu.pdf`);
-    // html2canvas(element).then((canvas) => {
-    //     const imgData = canvas.toDataURL('image/png');
-    //
-    //     let pdf
-    //     pdf = new jsPDF(
-    //         {unit: "in", format: "letter", orientation: "landscape"}
-    //     );
-    //     // Document of a4WidthMm wide and inputHeightMm high
-    //     // if (inputHeightMm > a4HeightMm) {
-    //     //     // elongated a4 (system print dialog will handle page breaks)
-    //     //     pdf = new jsPDF('p', 'mm', [inputHeightMm + 16, a4WidthMm]);
-    //     //     console.log('no std');
-    //     // } else {
-    //     //     // standard a4
-    //     //     pdf = new jsPDF();
-    //     // }
-    //
-    //     pdf.addImage(imgData, 'PNG', 0, 0);
-    //     pdf.save(`siuuuu.pdf`);
-    //
-    //     /*
-    //     //PENDIENTE ELIMINAR POR SI NO TIENE UTILIDAD
-    //     let body = element.cloneNode(true);
-    //     let opt = {
-    //         margin: 0,
-    //         filename: "myfile.pdf",
-    //         html2canvas: {scale: 2},
-    //         jsPDF: {unit: "in", format: "letter", orientation: "landscape"},
-    //     };
-    //     hasError += this.removeChildElement(body, "App", "data-entry");
-    //     hasError += this.removeChildElement(body, "App", "columns-selector");
-    //     hasError > 0
-    //         ? alert("ingrese el set de datos por favor")
-    //         : html2pdf(element, opt);
-    //      */
-    // });
-};
+// //DOWNLOAD PDF
+// const savePDF = async (event) => {
+//     let element = document.getElementsByClassName("app-header")[0];
+//     let options = {scale: 2};
+//     let canvas = await html2canvas(element, options);
+//     //let imgData = canvas.toDataURL('image/jpeg', 1.0); //JPEG
+//     let imgData = canvas.toDataURL("image/png");
+//     console.log("wit=", element.offsetWidth, canvas);
+//     const pdf = new jsPDF({
+//         unit: "px",
+//         format: [element.offsetWidth / 2, 800],
+//         orientation: "portrait",
+//     });
+//     pdf.addImage(
+//         imgData,
+//         "PNG",
+//         0,
+//         0,
+//         element.offsetWidth / 2,
+//         element.offsetHeight / 2
+//     );
+//
+//     let element2 = document.getElementsByClassName("frequency-table")[0];
+//     let canvas2 = await html2canvas(element2, options);
+//     let imgData2 = canvas2.toDataURL("image/png", 1.0);
+//     pdf.addImage(
+//         imgData2,
+//         "PNG",
+//         0,
+//         element.offsetHeight / 2,
+//         element2.offsetWidth / 2,
+//         element2.offsetHeight / 2
+//     );
+//
+//     let element3 = document.getElementsByClassName("data-summary")[0];
+//     let canvas3 = await html2canvas(element3, options);
+//     let imgData3 = canvas3.toDataURL("image/png", 1.0);
+//     pdf.addImage(
+//         imgData3,
+//         "PNG",
+//         0,
+//         element.offsetHeight / 2 + element2.offsetHeight / 2,
+//         element3.offsetWidth / 2,
+//         element3.offsetHeight / 2
+//     );
+//
+//     let element4 = document.getElementsByClassName("dataset")[0];
+//     let canvas4 = await html2canvas(element4, options);
+//     let imgData4 = canvas4.toDataURL("image/png", 1.0);
+//     pdf.addImage(
+//         imgData4,
+//         "PNG",
+//         0,
+//         element.offsetHeight / 2 +
+//         element2.offsetHeight / 2 +
+//         element3.offsetHeight / 2,
+//         element4.offsetWidth / 2,
+//         element4.offsetHeight / 2
+//     );
+//
+//     let element5 = document.getElementById("list-graphs");
+//     let canvas5 = await html2canvas(element5, options);
+//     let imgData5 = canvas5.toDataURL("image/png", 1.0);
+//     pdf.addImage(
+//         imgData5,
+//         "PNG",
+//         0,
+//         element.offsetHeight / 2 +
+//         element2.offsetHeight / 2 +
+//         element3.offsetHeight / 2 +
+//         element4.offsetHeight / 2,
+//         element5.offsetWidth / 2,
+//         element5.offsetHeight / 2
+//     );
+//
+//     pdf.save(`siuuuu.pdf`);
+//     // html2canvas(element).then((canvas) => {
+//     //     const imgData = canvas.toDataURL('image/png');
+//     //
+//     //     let pdf
+//     //     pdf = new jsPDF(
+//     //         {unit: "in", format: "letter", orientation: "landscape"}
+//     //     );
+//     //     // Document of a4WidthMm wide and inputHeightMm high
+//     //     // if (inputHeightMm > a4HeightMm) {
+//     //     //     // elongated a4 (system print dialog will handle page breaks)
+//     //     //     pdf = new jsPDF('p', 'mm', [inputHeightMm + 16, a4WidthMm]);
+//     //     //     console.log('no std');
+//     //     // } else {
+//     //     //     // standard a4
+//     //     //     pdf = new jsPDF();
+//     //     // }
+//     //
+//     //     pdf.addImage(imgData, 'PNG', 0, 0);
+//     //     pdf.save(`siuuuu.pdf`);
+//     //
+//     //     /*
+//     //     //PENDIENTE ELIMINAR POR SI NO TIENE UTILIDAD
+//     //     let body = element.cloneNode(true);
+//     //     let opt = {
+//     //         margin: 0,
+//     //         filename: "myfile.pdf",
+//     //         html2canvas: {scale: 2},
+//     //         jsPDF: {unit: "in", format: "letter", orientation: "landscape"},
+//     //     };
+//     //     hasError += this.removeChildElement(body, "App", "data-entry");
+//     //     hasError += this.removeChildElement(body, "App", "columns-selector");
+//     //     hasError > 0
+//     //         ? alert("ingrese el set de datos por favor")
+//     //         : html2pdf(element, opt);
+//     //      */
+//     // });
+// };
 
 const ACCEPTED_FILES = [".csv"];
 const FILE_NAME = "Dataset.csv"
@@ -129,7 +127,6 @@ class Actions extends React.Component {
         this.uploadCSV = this.uploadCSV.bind(this);
         this.onChangeCSV = this.onChangeCSV.bind(this);
         this.download = this.download.bind(this);
-        //this.savePDF = this.savePDF.bind(this);
         this.removeChildElement = this.removeChildElement.bind(this);
         let acceptedFilesString = ACCEPTED_FILES.join(",");
         let acceptedFilesRegex = ACCEPTED_FILES.join("|");
@@ -155,7 +152,7 @@ class Actions extends React.Component {
                     // dataString tiene la informacion del csv raw, en un String
                     let dataString = event.target.result;
                     //parsedData tiene la informacion del csv parsed a un JSON
-                    let parsedData = dataString.split(/\n|,/);
+                    let parsedData = dataString.split(/[\n,]/);
                     //csvData tiene toda la informacion del csv organizado en un objeto
                     let csvData = {
                         dataset: parsedData.slice(1, parsedData.indexOf("fi")),// TODO use something else to avoid errors when schema changes like instead of fi its useIntervalos
@@ -180,10 +177,9 @@ class Actions extends React.Component {
 
     uploadCSV(event) {
         if (event) {
-            console.log("event=", event);
-            let fileInput = event.target.parentElement.firstChild;
-            if (fileInput.type == "file") {
-                fileInput.click();
+            const fileInput = event.target.parentElement.firstChild;
+            if (fileInput.type === "file") {
+                fileInput.click && fileInput.click();
             } else console.log("there is a problem with the upload button");
         }
     }
@@ -270,14 +266,13 @@ class Actions extends React.Component {
 
                 <Button
                     isActive={this.props.dataSet.length !== 0}
-                    onClick={this.download}
-                >
+                    onClick={this.download}>
                     Exportar CSV
                 </Button>
                 <Button onClick={this.uploadCSV}>Importar CSV</Button>
-                <Button isActive={this.props.dataSet.length !== 0} onClick={savePDF}>
-                    Descargar PDF
-                </Button>
+                {/*<Button isActive={this.props.dataSet.length !== 0} onClick={savePDF}>*/}
+                {/*    Descargar PDF*/}
+                {/*</Button>*/}
             </div>
         );
     }
