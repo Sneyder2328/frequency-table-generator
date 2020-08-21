@@ -2,9 +2,10 @@ import React, {useEffect, useState, KeyboardEvent} from 'react';
 import "./dataEntry.scss"
 import classNames from "classnames";
 import {createAction} from "@reduxjs/toolkit";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {useHistory} from 'react-router-dom';
 import {Button} from "../UI/Button/button";
+import {AppState} from "../../mainReducer";
 
 export const cleanAll = createAction("CLEAN_ALL")
 export const processDataSet = createAction<Array<number>>("PROCESS_DATA_SET")
@@ -17,11 +18,11 @@ const convertToArray = (data: string): Array<number> => {
 }
 
 export const DataEntry = () => {
+    const dataSet = useSelector(((state: AppState) => state.dataSet))
     const [data, setData] = useState<string>("");
     const [arrayNums, setArrayNums] = useState<Array<number>>([])
     const [isInputValid, setValidInput] = useState(true)
     const dispatch = useDispatch()
-    //const history = useHistory();
 
     useEffect(() => {
         const dataset = convertToArray(data.trim())
@@ -37,7 +38,6 @@ export const DataEntry = () => {
     }
 
     const handleCalc = () => {
-        //history.push("/?dataset=" + arrayNums.join("-"))
         dispatch(processDataSet(arrayNums))
     }
 
@@ -56,7 +56,7 @@ export const DataEntry = () => {
             <Button isActive={isInputValid && data.trim() !== ""} onClick={handleCalc}>
                 Procesar
             </Button>
-            <Button onClick={handleClean}>
+            <Button isActive={dataSet.length !== 0 || data.trim() !== ""} onClick={handleClean}>
                 Limpiar
             </Button>
         </div>
