@@ -7,11 +7,16 @@
     padding: 6px 10px;
     margin-right: 14px;
     margin-left: 0;
+
+    &:last-of-type {
+      margin-right: 0;
+    }
   }
 
   .show {
     display: block;
   }
+
   .none {
     display: none;
   }
