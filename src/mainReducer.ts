@@ -94,15 +94,15 @@ const defaultGraphics = {
     },
     [SECTORS]: {
         label: SECTORS,
-        active: false
+        active: true
     },
     [LINES]: {
         label: LINES,
-        active: false
+        active: true
     },
     [MIXED]: {
         label: MIXED,
-        active: false
+        active: true
     }
 }
 

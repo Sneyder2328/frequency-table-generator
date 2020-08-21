@@ -23,10 +23,10 @@ export const Graph: React.FC<Props> = ({title, text, scaleXName, scaleYName, typ
         {
             // @ts-ignore
             ...configGraphs[typeGraph],
-            type: graphs[typeGraph].type,
             scaleY: {label: {text: scaleYName}}
         }
     )
+    const [indexSelected, setIndexSelected] = useState<number>(graphs[typeGraph].frequencies[graphs[typeGraph].indexDefaultFrequency].index)
     const chart = useRef(null)
     const {frequencyTable, dataSet, columnsTableByIntervals, columnsTableByClasses, useIntervals} = useSelector((state: AppState) => state)
 
@@ -39,12 +39,11 @@ export const Graph: React.FC<Props> = ({title, text, scaleXName, scaleYName, typ
 
     useEffect(() => {
         const labels = frequencyTable.map((freq) => freq[Object.keys(columnsTable)[0]]);
-
         const getFrequencies = (index: number) => frequencyTable.map((freq) => freq[Object.keys(columnsTable)[index]]).map(str => parseFloat(str))
-        const frequencies = getFrequencies(graphs[typeGraph].indexDefaultFrequency)
+        const frequencies = getFrequencies(indexSelected)
         console.log(labels, frequencies);
 
-        const series = graphs[typeGraph].getSeries(frequencies)
+        const series = graphs[typeGraph].getSeries(frequencies, labels)
         setConfig({
             ...config,
             // @ts-ignore
@@ -55,18 +54,17 @@ export const Graph: React.FC<Props> = ({title, text, scaleXName, scaleYName, typ
             },
         })
 
-    }, [frequencyTable])
+    }, [frequencyTable, indexSelected])
 
     if (dataSet.length === 0 || isHidden) return null
     return (
         <div className={"graph-container"}>
             <div className={'section-title'}>
                 <span>{title}</span>
-                <select className={'selector'}>
-                    <option value="0">fi</option>
-                    <option value="1">fri</option>
-                    <option value="2">Fi</option>
-                    <option value="3">Fri</option>
+                <select className={'selector'} value={indexSelected} onChange={(e) => setIndexSelected(parseInt(e.target.value))}>
+                    {
+                        graphs[typeGraph].frequencies.map(({index, label}) => (<option value={index}>{label}</option>))
+                    }
                 </select>
             </div>
             <div className={'graph'}>

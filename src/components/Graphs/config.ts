@@ -5,6 +5,7 @@ const MIXED = 'Columnas Con Lineas'
 
 export const configGraphs = {
     [HISTOGRAM]: {
+        type: "bar",
         scaleX: {
             labels: ["1", "2", "5"],
             guide: {
@@ -43,10 +44,10 @@ export const configGraphs = {
             "border-color": "gray",
             "border-radius": "5px",
             header: {
-                text: "Legend",
+                text: "Leyenda",
                 "font-family": "Georgia",
                 "font-size": 12,
-                "font-color": "#3333cc",
+                "font-color": "#0075ff",
                 "font-weight": "normal",
             },
             marker: {
@@ -59,8 +60,7 @@ export const configGraphs = {
             },
             "max-items": 8,
             overflow: "scroll",
-        },
-        series: [{values: [58], text: "Alpha"}, {values: 55}],
+        }
     },
     [LINES]: {
         type: "line",
@@ -70,7 +70,7 @@ export const configGraphs = {
         },
         scaleX: {
             guide: {
-                lineColor: "gray",
+                lineColor: "#c7e5ff",
                 lineStyle: "solid",
                 lineWidth: 1,
                 visible: true,
@@ -115,18 +115,10 @@ export const configGraphs = {
             hoverState: {
                 visible: false,
             },
-        },
-        series: [
-            {
-                values: [
-                    [1, 2],
-                    [2, 3],
-                    [3, 4],
-                ],
-            },
-        ],
+        }
     },
     [MIXED]: {
+        type: 'mixed',
         scaleX: {
             labels: ["1", "2", "5"],
             guide: {
