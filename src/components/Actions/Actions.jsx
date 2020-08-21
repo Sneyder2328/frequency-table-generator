@@ -117,7 +117,7 @@ class Actions extends React.Component {
                     let parsedData = dataString.split(/\n|,/);
                     //csvData tiene toda la informacion del csv organizado en un objeto
                     let csvData = {
-                        dataset: parsedData.slice(1, parsedData.indexOf("usandoIntervalos")),
+                        dataset: parsedData.slice(1, parsedData.indexOf("fi")),
                         // usandoIntervalos:
                         //     parsedData[parsedData.indexOf("usandoIntervalos") + 1]
                     };
