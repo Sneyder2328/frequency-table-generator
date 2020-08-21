@@ -1,6 +1,25 @@
-$background-color: #3a9bf9;
+$background-color-btn: rgba(0, 137, 253, 0.28);
+//$background-color-btn-active: #3a9bf9;
+$background-color-btn-active: #145da0;
+$background-color-btn-hovered: #116dc6;
+
+$background-color: #145da0;
+
 $background-color-hovered: #116dc6;
-$background-color-light: #a7d3ff;
-$background-color-ultra-light: #e6f4ff;
-$text-color: #fff;
+$background-color-light: rgba(0, 137, 253, 0.28);
+$background-color-ultra-light: #e9f1fc;
+
+$primary-text-color: #fff;
+$secondary-text-color: #44719c;
+$body-text-color: #5789b9;
+
+$table-border-color: #5789b9;
+
+$body-background-color: #0f0;
+$app-background-color: #0f0;
+
 $margin: 20px;
+
+$phone: 640px;
+$tablet: 768px;
+$desktop: 1024px;

@@ -5,20 +5,22 @@
   margin-right: 8px;
   border-radius: 15px;
   padding: 6px 11px;
-  color: $text-color;
+  color: $primary-text-color;
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.15s ease-in-out;
   user-select: none;
+  display: flex;
+  align-items: center;
 
   &.active {
     background-color: $background-color;
   }
 
   &.editable:hover {
-    background-color: #2782de;
+    background-color: $background-color-hovered;
   }
   &.editable.active:hover {
-    background-color: #7ebfff;
+    background-color: $background-color-hovered;
   }
 }

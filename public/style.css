@@ -1,0 +1,14 @@
+body {
+  background: url("https://i.pinimg.com/originals/2d/cc/61/2dcc61362a309a474e1f04f10f7d090f.jpg")
+    fixed;
+  z-index: -2;
+}
+
+body::before {
+  content: "";
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: -1;
+}

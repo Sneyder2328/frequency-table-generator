@@ -11,14 +11,23 @@ export const LINES = 'Lineas'
 export const MIXED = 'Columnas Con Lineas'
 
 type GraphConfig = {
-    type: string;
     indexDefaultFrequency: number;
-    getSeries: (values: Array<number>) => any; //series: Array<{ type: string; values: Array<number }>
+    frequencies: Array<{ label: string, index: number }>
+    getSeries: (values: Array<number>, labels?: Array<string>) => any; //series: Array<{ type: string; values: Array<number }>
 }
 export const graphs: HashTable<GraphConfig> = {
     [HISTOGRAM]: {
-        type: "bar",
-        indexDefaultFrequency: 1,
+        indexDefaultFrequency: 0,//1,
+        frequencies: [
+            {
+                label: "fi",
+                index: 1,
+            },
+            {
+                label: "fri",
+                index: 2,
+            }
+        ],
         getSeries(values) {
             return [
                 {
@@ -29,15 +38,34 @@ export const graphs: HashTable<GraphConfig> = {
         }
     },
     [SECTORS]: {
-        type: "pie",
-        indexDefaultFrequency: 3,
-        getSeries(values) {
-            return values.map((num, index) => ({values: [num], text: "ind" + index}))
+        indexDefaultFrequency: 0,
+        frequencies: [
+            {
+                label: "fri",
+                index: 2,
+            },
+            {
+                label: "Fri",
+                index: 4,
+            }
+        ],
+        getSeries(values, labels) {
+            if (labels) return values.map((num, index) => ({values: [num], text: labels[index]}))
+            return values.map((num) => ({values: [num]}))
         }
     },
     [LINES]: {
-        type: "line",
-        indexDefaultFrequency: 4,
+        indexDefaultFrequency: 0,
+        frequencies: [
+            {
+                label: "Fi",
+                index: 3,
+            },
+            {
+                label: "Fri",
+                index: 4,
+            }
+        ],
         getSeries(values) {
             return [
                 {
@@ -47,8 +75,17 @@ export const graphs: HashTable<GraphConfig> = {
         }
     },
     [MIXED]: {
-        type: "mixed",
-        indexDefaultFrequency: 4,
+        indexDefaultFrequency: 1,
+        frequencies: [
+            {
+                label: "fri",
+                index: 2,
+            },
+            {
+                label: "Fri",
+                index: 4,
+            }
+        ],
         getSeries(values) {
             return [
                 {
@@ -77,33 +114,29 @@ export const Graphs = () => {
     const {graphicsList} = useSelector((state: AppState) => state)
 
     return (
-        <div>
+        <div id={'list-graphs'}>
             <Graph
                 isHidden={!graphicsList[HISTOGRAM].active}
                 title={HISTOGRAM}
                 scaleXName={"nombre var"}
-                scaleYName={"fi"}
                 text={"subtitulo"}
                 typeGraph={HISTOGRAM}/>
             <Graph
                 isHidden={!graphicsList[SECTORS].active}
                 title={SECTORS}
                 scaleXName={"nombre var"}
-                scaleYName={"fi"}
                 text={"subtitulo"}
                 typeGraph={SECTORS}/>
             <Graph
                 isHidden={!graphicsList[LINES].active}
                 title={LINES}
                 scaleXName={"nombre var"}
-                scaleYName={"fi"}
                 text={"subtitulo"}
                 typeGraph={LINES}/>
             <Graph
                 isHidden={!graphicsList[MIXED].active}
                 title={MIXED}
                 scaleXName={"nombre var"}
-                scaleYName={"fi"}
                 text={"subtitulo"}
                 typeGraph={MIXED}/>
         </div>

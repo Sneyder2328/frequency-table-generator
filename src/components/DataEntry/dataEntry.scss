@@ -3,11 +3,11 @@
 .data-entry {
   display: flex;
   justify-content: space-between;
-  padding-top: $margin*2;
+  padding-top: $margin * 2;
 
   &:before {
     content: "Ingrese set de datos (separar con espacio o comas y usar punto para nros decimales. ej: 5.5 6.2 8 9.5)";
-    color: #118bff;
+    color: $body-text-color;
     position: absolute;
     top: 90px;
     font-size: 0.8rem;
@@ -19,17 +19,49 @@
     border: 1px solid $background-color;
     outline: none;
     font-size: 1rem;
+    color: $secondary-text-color;
 
     &:focus {
       border: 2px solid $background-color;
       padding: 5px 7px;
     }
+
     &.error {
       border: 1px solid #ff0000;
     }
+
     &:focus.error {
       border: 2px solid #ff0000;
       padding: 5px 7px;
+    }
+  }
+}
+
+@media (max-width: $tablet) {
+  .data-entry {
+    flex-wrap: wrap;
+
+    .input {
+      width: 100%;
+    }
+
+    .button {
+      width: 45%;
+      margin: 8px 0 0 0;
+    }
+
+    &:before {
+      top: 85px;
+      font-size: 0.6rem;
+    }
+  }
+}
+@media (max-width: $phone) {
+  .data-entry {
+    &:before {
+      margin-right: 4px;
+      top: 68px;
+      font-size: 0.65rem;
     }
   }
 }

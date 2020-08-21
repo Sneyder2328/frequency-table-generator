@@ -3,29 +3,42 @@
 html, body {
   width: 100%;
   height: 100%;
+  font-family: 'Roboto', sans-serif;
 }
 
-body {
-  font-family: 'Roboto', sans-serif;
+#root .App {
+  width: 95%;
+  margin: 0 auto;
+  padding-bottom: $margin;
+}
 
-  #root {
+@media (min-width: $phone) and (max-width: $tablet) {
+  #root .App {
+    width: 90%;
+  }
+}
 
-    .App {
-      width: 70%;
-      margin: 0 auto;
-      padding-bottom: $margin;
-    }
+@media (min-width: $tablet) and (max-width: $desktop) {
+  #root .App {
+    width: 80%;
+    max-width: 1000px;
+  }
+}
+@media (min-width: $desktop) {
+  #root .App {
+    width: 70%;
+    max-width: 1150px;
   }
 }
 
 .table {
   width: 100%;
-  color: $background-color;
-  border: 1px $background-color solid;
+  color: $body-text-color;
+  border: 1px $table-border-color solid;
   font-size: 1rem;
 
   td {
-    border: 1px $background-color solid;
+    border: 1px $table-border-color solid;
     padding: 4px 5px;
   }
 
@@ -33,7 +46,7 @@ body {
     td {
       color: #fff;
       background-color: $background-color;
-      border-right: 1px #0066ff solid;
+      border-right: 1px $table-border-color solid;
 
       &:last-of-type {
         border-right: none;
@@ -42,9 +55,9 @@ body {
   }
 }
 
-.title {
+.section-title {
   background-color: $background-color;
-  color: $text-color;
+  color: $primary-text-color;
   display: flex;
   align-items: center;
   cursor: pointer;
