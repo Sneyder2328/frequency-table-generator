@@ -51,7 +51,7 @@ export const DataEntry = () => {
 
     return (
         <div className={'data-entry'}>
-            <input className={classNames('input', {'error': !isInputValid})} type='text' value={data}
+            <input className={classNames('input', {'error': !isInputValid})} type="number" pattern="[0-9]*" value={data}
                    onChange={(e) => setData(e.target.value)} onKeyDown={handleKeyDown}/>
             <Button isActive={isInputValid && data.trim() !== ""} onClick={handleCalc}>
                 Procesar
