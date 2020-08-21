@@ -77,7 +77,7 @@ export const Graphs = () => {
     const {graphicsList} = useSelector((state: AppState) => state)
 
     return (
-        <div>
+        <div id={'list-graphs'}>
             <Graph
                 isHidden={!graphicsList[HISTOGRAM].active}
                 title={HISTOGRAM}
