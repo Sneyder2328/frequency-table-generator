@@ -9,7 +9,6 @@ export const configGraphs = {
     scaleX: {
       labels: ["1", "2", "5"],
       guide: {
-        backgroundColor: "#145da0 #145da0",
         lineColor: "#b5ddff",
         lineStyle: "solid",
         lineWidth: 1,
@@ -23,7 +22,11 @@ export const configGraphs = {
     },
     plot: {
       aspect: "spline",
-    },
+      animation: {
+        delay: 350,
+        effect: "ANIMATION_SLIDE_BOTTOM",
+      }
+    }
   },
   [SECTORS]: {
     type: "pie",
@@ -41,13 +44,13 @@ export const configGraphs = {
       x: "75%",
       y: "25%",
       "border-width": 1,
-      "border-color": "gray",
-      "border-radius": "5px",
+      "border-color": "#145da0",
+      "border-radius": "8px",
       header: {
         text: "Leyenda",
-        "font-family": "Georgia",
-        "font-size": 12,
-        "font-color": "#0075ff",
+        "font-family": "Arial",
+        "font-size": 13,
+        "font-color": "#145da0",
         "font-weight": "normal",
       },
       marker: {
@@ -56,11 +59,11 @@ export const configGraphs = {
       "toggle-action": "remove",
       minimize: true,
       icon: {
-        "line-color": "#9999ff",
+        "line-color": "#145da0",
       },
       "max-items": 8,
       overflow: "scroll",
-    },
+    }
   },
   [LINES]: {
     type: "line",
@@ -73,11 +76,8 @@ export const configGraphs = {
         lineColor: "#c7e5ff",
         lineStyle: "solid",
         lineWidth: 1,
-        visible: true,
-      },
-      label: {
-        text: "scale X",
-      },
+        visible: true
+      }
     },
     scaleY: {
       label: {
@@ -108,12 +108,12 @@ export const configGraphs = {
         padding: "7%",
       },
       animation: {
-        delay: 500,
+        delay: 350,
         effect: "ANIMATION_SLIDE_BOTTOM",
       },
       barWidth: "33px",
       hoverState: {
-        visible: false,
+        visible: false
       },
     },
   },
@@ -122,11 +122,10 @@ export const configGraphs = {
     scaleX: {
       labels: ["1", "2", "5"],
       guide: {
-        backgroundColor: "#e6fcff #96efff",
-        lineColor: "red",
+        lineColor: "#b5ddff",
         lineStyle: "solid",
         lineWidth: 1,
-        visible: false,
+        visible: true
       },
     },
     scaleY: {
@@ -136,6 +135,10 @@ export const configGraphs = {
     },
     plot: {
       aspect: "spline",
-    },
+      animation: {
+        delay: 350,
+        effect: "ANIMATION_SLIDE_BOTTOM",
+      }
+    }
   },
 };
