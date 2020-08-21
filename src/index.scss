@@ -6,10 +6,33 @@ html, body {
   font-family: 'Roboto', sans-serif;
 }
 
-#root .App {
-  width: 95%;
-  margin: 0 auto;
-  padding-bottom: $margin;
+body {
+  //background: url("https://i.pinimg.com/originals/2d/cc/61/2dcc61362a309a474e1f04f10f7d090f.jpg") fixed;
+  background: url("https://i.pinimg.com/originals/37/73/a1/3773a1822965f7219b36eff612779b10.jpg") fixed;
+  z-index: -2;
+
+  &::before {
+    content: "";
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: -1;
+  }
+}
+
+#root {
+  box-sizing: border-box;
+
+  .App {
+    width: 95%;
+    height: 100%;
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 0 $margin $margin $margin;
+    background: rgba(248, 245, 245, 0.95);
+    box-shadow: 2px 3px 4px black;
+  }
 }
 
 @media (min-width: $phone) and (max-width: $tablet) {
@@ -24,6 +47,7 @@ html, body {
     max-width: 1000px;
   }
 }
+
 @media (min-width: $desktop) {
   #root .App {
     width: 70%;

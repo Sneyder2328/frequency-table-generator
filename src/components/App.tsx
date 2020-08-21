@@ -14,7 +14,6 @@ import Actions from "./Actions/Actions";
 import { BrowserRouter as Router, useHistory } from "react-router-dom";
 import { useQuery } from "../utils/utils";
 import { AppState } from "../mainReducer";
-import "./AppStyle.css";
 
 function InnerApp() {
   const query = useQuery();
