@@ -14,19 +14,18 @@ type Props = {
     title: string;
     text: string;
     scaleXName: string;
-    scaleYName: string;
     typeGraph: string;
     isHidden: boolean;
 }
-export const Graph: React.FC<Props> = ({title, text, scaleXName, scaleYName, typeGraph, isHidden}) => {
+export const Graph: React.FC<Props> = ({title, text, scaleXName, typeGraph, isHidden}) => {
+    const [indexSelected, setIndexSelected] = useState<number>(graphs[typeGraph].frequencies[graphs[typeGraph].indexDefaultFrequency].index)
     const [config, setConfig] = useState(
         {
             // @ts-ignore
             ...configGraphs[typeGraph],
-            scaleY: {label: {text: scaleYName}}
+            scaleY: {label: {text: graphs[typeGraph].frequencies.find(({index}) => index === indexSelected)?.label}}
         }
     )
-    const [indexSelected, setIndexSelected] = useState<number>(graphs[typeGraph].frequencies[graphs[typeGraph].indexDefaultFrequency].index)
     const chart = useRef(null)
     const {frequencyTable, dataSet, columnsTableByIntervals, columnsTableByClasses, useIntervals} = useSelector((state: AppState) => state)
 
@@ -48,6 +47,7 @@ export const Graph: React.FC<Props> = ({title, text, scaleXName, scaleYName, typ
             ...config,
             // @ts-ignore
             series,
+            scaleY: {label: {text: graphs[typeGraph].frequencies.find(({index}) => index === indexSelected)?.label}},
             scaleX: {
                 ...config.scaleX,
                 labels
@@ -61,7 +61,8 @@ export const Graph: React.FC<Props> = ({title, text, scaleXName, scaleYName, typ
         <div className={"graph-container"}>
             <div className={'section-title'}>
                 <span>{title}</span>
-                <select className={'selector'} value={indexSelected} onChange={(e) => setIndexSelected(parseInt(e.target.value))}>
+                <select className={'selector'} value={indexSelected}
+                        onChange={(e) => setIndexSelected(parseInt(e.target.value))}>
                     {
                         graphs[typeGraph].frequencies.map(({index, label}) => (<option value={index}>{label}</option>))
                     }

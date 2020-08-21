@@ -119,28 +119,24 @@ export const Graphs = () => {
                 isHidden={!graphicsList[HISTOGRAM].active}
                 title={HISTOGRAM}
                 scaleXName={"nombre var"}
-                scaleYName={"fi"}
                 text={"subtitulo"}
                 typeGraph={HISTOGRAM}/>
             <Graph
                 isHidden={!graphicsList[SECTORS].active}
                 title={SECTORS}
                 scaleXName={"nombre var"}
-                scaleYName={"fi"}
                 text={"subtitulo"}
                 typeGraph={SECTORS}/>
             <Graph
                 isHidden={!graphicsList[LINES].active}
                 title={LINES}
                 scaleXName={"nombre var"}
-                scaleYName={"fi"}
                 text={"subtitulo"}
                 typeGraph={LINES}/>
             <Graph
                 isHidden={!graphicsList[MIXED].active}
                 title={MIXED}
                 scaleXName={"nombre var"}
-                scaleYName={"fi"}
                 text={"subtitulo"}
                 typeGraph={MIXED}/>
         </div>

@@ -2,10 +2,10 @@
 
 .button {
   border: none;
-  color: $text-color;
+  color: $primary-text-color;
   margin-left: $margin*0.8;
   font-size: 1rem;
-  background-color: $background-color-light;
+  background-color: $background-color-btn;
   padding: 6px 20px;
   cursor: pointer;
   outline: none;
@@ -14,10 +14,10 @@
   font-family: "Roboto", sans-serif;
 
   &.active {
-    background-color: $background-color;
+    background-color: $background-color-btn-active;
   }
 
   &.active:hover {
-    background-color: $background-color-hovered;
+    background-color: $background-color-btn-hovered;
   }
 }

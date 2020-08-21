@@ -7,7 +7,7 @@
 
   &:before {
     content: "Ingrese set de datos (separar con espacio o comas y usar punto para nros decimales. ej: 5.5 6.2 8 9.5)";
-    color: #118bff;
+    color: $body-text-color;
     position: absolute;
     top: 90px;
     font-size: 0.8rem;
@@ -19,6 +19,7 @@
     border: 1px solid $background-color;
     outline: none;
     font-size: 1rem;
+    color: $secondary-text-color;
 
     &:focus {
       border: 2px solid $background-color;
