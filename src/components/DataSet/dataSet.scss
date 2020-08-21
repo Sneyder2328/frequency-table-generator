@@ -5,6 +5,8 @@
 
   .content {
     background-color: $background-color-ultra-light;
+    border-bottom-left-radius: $border-radius;
+    border-bottom-right-radius: $border-radius;
     padding: 8px;
     font-size: 0.88rem;
     color: $background-color;

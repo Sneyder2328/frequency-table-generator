@@ -82,6 +82,8 @@ body {
 .section-title {
   background-color: $background-color;
   color: $primary-text-color;
+  border-top-left-radius: $border-radius;
+  border-top-right-radius: $border-radius;
   display: flex;
   align-items: center;
   cursor: pointer;
