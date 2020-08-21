@@ -40,7 +40,7 @@ export const graphs: HashTable<GraphConfig> = {
             return [
                 {
                     values,
-                    "bar-width": "60%",
+                    "bar-width": "60%"
                 }
             ]
         }

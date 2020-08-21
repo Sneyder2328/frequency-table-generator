@@ -10,11 +10,11 @@ export const Legend = () => {
     if (dataSet.length === 0) return null
     return (
         <div className={'legend'}>
-            <div className={'section-title'} onClick={() => setVisible(!visible)}>
+            <div className={classNames('section-title', {'shrink': !visible})} onClick={() => setVisible(!visible)}>
                 <i className={classNames("fas fa-angle-down", {"fa-angle-up": visible})}/>
                 <span>Leyenda</span>
             </div>
-            <div className={classNames('content', {"hide": !visible})}>
+            <div className={classNames('section-content', {"hide": !visible})}>
                 <p>
                     <span>
                     <strong>fi:</strong> Frecuencia Frecuencia absoluta

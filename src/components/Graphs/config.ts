@@ -9,11 +9,11 @@ export const configGraphs = {
     scaleX: {
       labels: ["1", "2", "5"],
       guide: {
-        backgroundColor: "#e6fcff #96efff",
-        lineColor: "red",
+        backgroundColor: "#145da0 #145da0",
+        lineColor: "#b5ddff",
         lineStyle: "solid",
         lineWidth: 1,
-        visible: false,
+        visible: true,
       },
     },
     scaleY: {

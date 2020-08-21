@@ -7,7 +7,6 @@ html, body {
 }
 
 body {
-  //background: url("https://i.pinimg.com/originals/2d/cc/61/2dcc61362a309a474e1f04f10f7d090f.jpg") fixed;
   background: url("https://i.pinimg.com/originals/37/73/a1/3773a1822965f7219b36eff612779b10.jpg") fixed;
   z-index: -2;
 
@@ -88,6 +87,11 @@ body {
   align-items: center;
   cursor: pointer;
 
+  &.shrink {
+    border-bottom-right-radius: $border-radius;
+    border-bottom-left-radius: $border-radius;
+  }
+
   i {
     cursor: pointer;
     font-size: 1rem;
@@ -98,4 +102,35 @@ body {
     font-size: 1rem;
     margin: 6px 8px;
   }
+}
+.section-content {
+  background-color: $background-color-ultra-light;
+  border-bottom-left-radius: $border-radius;
+  border-bottom-right-radius: $border-radius;
+  padding: 6px 8px;
+  font-size: 0.9rem;
+  color: $background-color;
+  white-space: pre-wrap;
+
+  &.hide {
+    display: none;
+    padding: 0;
+  }
+
+  p {
+    display: flex;
+    flex-wrap: wrap;
+
+    span {
+      margin-right: 14px;
+      margin-top: 1.5px;
+      margin-bottom: 1.5px;
+    }
+
+    strong {
+      font-weight: 600;
+    }
+
+  }
+
 }
