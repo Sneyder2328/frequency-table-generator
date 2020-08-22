@@ -38,7 +38,7 @@ export const Legend = () => {
                     <strong>CV:</strong> coeficiente de variación
                     </span>
                     <span>
-                    <strong>ASP:</strong> coeficiente de asimetria de Paarson
+                    <strong>ASP:</strong> coeficiente de asimetría de Pearson
                     </span>
                 </p>
             </div>
