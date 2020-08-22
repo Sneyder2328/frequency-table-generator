@@ -32,6 +32,9 @@ export const Legend = () => {
                     <strong>mi:</strong> marca
                     </span>
                     <span>
+                    <strong>x̄:</strong> media
+                    </span>
+                    <span>
                     <strong>n:</strong> cantidad de datos
                     </span>
                     <span>
