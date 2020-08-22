@@ -35,10 +35,10 @@ export const Legend = () => {
                     <strong>n:</strong> cantidad de datos
                     </span>
                     <span>
-                    <strong>k:</strong> Nro de categorias
+                    <strong>CV:</strong> coeficiente de variación
                     </span>
                     <span>
-                    <strong>c:</strong> tamaño de categoria
+                    <strong>ASP:</strong> coeficiente de asimetria de Paarson
                     </span>
                 </p>
             </div>

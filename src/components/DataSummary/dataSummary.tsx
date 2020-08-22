@@ -4,7 +4,7 @@ import {AppState} from "../../mainReducer";
 import "./dataSummary.scss"
 import {formatNumber} from "../../utils/utils";
 
-const columnsTitles = ["n", "nro categorias","amplitud", "media", "mediana", "moda", "rango", "varianza", "desviacion std", "CV", "ASP"]
+const columnsTitles = ["n", "nro categorías","amplitud", "media", "mediana", "moda", "rango", "varianza", "desviacion std", "CV", "ASP"]
 
 export const DataSummary = () => {
     const dataSummary = useSelector((state: AppState) => state.dataSummary)

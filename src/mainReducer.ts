@@ -8,7 +8,7 @@ import {HISTOGRAM, LINES, MIXED, SECTORS} from "./components/Graphs/graphs";
 
 const defaultColumnsIntervals = {
     [nanoid()]: {
-        label: "Categoria",
+        label: "Categoría",
         active: true
     },
     [nanoid()]: {
