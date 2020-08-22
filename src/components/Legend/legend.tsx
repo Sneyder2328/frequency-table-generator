@@ -17,10 +17,10 @@ export const Legend = () => {
             <div className={classNames('section-content', {"hide": !visible})}>
                 <p>
                     <span>
-                    <strong>fi:</strong> Frecuencia Frecuencia absoluta
+                    <strong>fi:</strong> Frecuencia absoluta
                     </span>
                     <span>
-                    <strong>fri:</strong> Frecuencia Frecuencia relativa
+                    <strong>fri:</strong> Frecuencia relativa
                     </span>
                     <span>
                     <strong>Fi:</strong> Frecuencia acumulada
