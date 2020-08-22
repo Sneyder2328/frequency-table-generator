@@ -1,6 +1,8 @@
 @import "utils/variables";
 
 html, body {
+  padding: 0;
+  margin: 0;
   width: 100%;
   height: 100%;
   font-family: 'Roboto', sans-serif;
@@ -24,7 +26,7 @@ body {
   box-sizing: border-box;
 
   .App {
-    width: 95%;
+    width: 100%;
     height: 100%;
     box-sizing: border-box;
     margin: 0 auto;
@@ -34,23 +36,27 @@ body {
   }
 }
 
-@media (min-width: $phone) and (max-width: $tablet) {
+@media (min-width: $phone) {
   #root .App {
-    width: 90%;
+    width: 93%;
   }
 }
 
-@media (min-width: $tablet) and (max-width: $desktop) {
+@media (min-width: $tablet) {
   #root .App {
-    width: 80%;
-    max-width: 1000px;
+    width: 82%;
   }
 }
 
 @media (min-width: $desktop) {
   #root .App {
-    width: 70%;
-    max-width: 1150px;
+    width: 72%;
+  }
+}
+
+@media (min-width: $desktop-large) {
+  #root .App {
+    width: 65%;
   }
 }
 
