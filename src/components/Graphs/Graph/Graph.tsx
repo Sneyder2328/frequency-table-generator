@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import "zingchart/es6";
-import "zingchart-react/dist/modules/zingchart-depth.min.js";
+// import "zingchart-react/dist/modules/zingchart-depth.min.js";
 // @ts-ignore
 import ZingChart from "zingchart-react";
 import { useSelector } from "react-redux";
